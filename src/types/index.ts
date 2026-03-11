@@ -24,6 +24,19 @@ export interface FiscalProfile {
   updated_at: string;
 }
 
+export interface Transaction {
+  id: string;
+  user_id: string;
+  type: "incasare" | "plata";
+  amount: number;
+  description: string;
+  category: string | null;
+  document_number: string | null;
+  transaction_date: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface AlertPreference {
   id: string;
   user_id: string;

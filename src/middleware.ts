@@ -46,7 +46,8 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith("/calendar") ||
     pathname.startsWith("/estimator") ||
     pathname.startsWith("/d212") ||
-    pathname.startsWith("/alerte");
+    pathname.startsWith("/alerte") ||
+    pathname.startsWith("/registru");
 
   // Redirect unauthenticated users away from protected routes
   if (!user && isProtectedRoute) {
