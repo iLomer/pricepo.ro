@@ -10,7 +10,7 @@
 - **Mode:** swarm
 - **Started:** 2026-03-11
 - **Total epics:** 7
-- **Total tasks:** 13
+- **Total tasks:** 20
 - **Acceptance criteria:** 5 / 5 passed
 
 ---
@@ -21,7 +21,7 @@
 |---|---|---|---|---|---|
 | E1 | Project Setup | @meto-epic-e1 | complete | 5/5 | none |
 | E2 | Auth & Fiscal Profile | @meto-epic-e2 | complete | 4/4 | none |
-| E3 | Core PFA Features | @meto-epic-e3 | not-started | 0 | E2 |
+| E3 | Core PFA Features | @meto-epic-e3 | complete | 7/7 | none |
 | E4 | Landing Page & Validation | @meto-epic-e4 | complete | 4/4 | none |
 | E5 | Deploy & Production | @meto-epic-e5 | not-started | 0 | E4 |
 | E6 | ANAF Integration | @meto-epic-e6 | not-started | 0 | E2, E3 |
@@ -39,7 +39,7 @@ See full ownership rules in `ai/swarm/domain-map.md`.
 |---|---|
 | E1 | `/src/lib/`, `/src/config/`, root config files |
 | E2 | `/src/app/(auth)/`, `/src/app/onboarding/`, `/src/components/auth/`, `/src/components/onboarding/`, `src/middleware.ts` |
-| E3 | `/src/app/(dashboard)/`, `/src/components/calendar/`, `/src/components/estimator/`, `/src/components/d212/` |
+| E3 | `/src/app/(dashboard)/`, `/src/components/calendar/`, `/src/components/estimator/`, `/src/components/d212/`, `/src/components/alerts/`, `/src/lib/fiscal/`, `/src/app/api/alerts/` |
 | E4 | `/src/app/(marketing)/`, `/src/components/landing/`, `/src/components/waitlist/`, `/src/app/api/waitlist/` |
 | E5 | `/vercel.json`, `/.github/`, deployment configs |
 | E6 | `/src/lib/anaf/`, `/src/app/api/anaf/`, `/src/components/anaf/` |
@@ -61,6 +61,10 @@ Append only. Never delete entries. One line per checkpoint.
 2026-03-11 | E4 | done:3 | status:on-track | blocker:none | note:slice-010 (landing page hero), slice-011 (waitlist form), slice-012 (SEO/OG tags) completed. Remaining: slice-013 (analytics). All within E4 domain, no conflicts.
 2026-03-11 | E2 | done:4 | status:complete | blocker:none | note:All E2 tasks complete. slice-009 (onboarding flow) finished. Auth middleware, sign-up/in/out UI, fiscal profiles DB schema, onboarding wizard all implemented. E3/E6/E7 unblocked from E2 dependency.
 2026-03-11 | E4 | done:4 | status:complete | blocker:none | note:All E4 tasks complete. slice-010 (hero), slice-011 (waitlist), slice-012 (SEO), slice-013 (analytics) finished. Landing page ready. E5 (deploy) unblocked.
+2026-03-11 | E3 | done:0 | status:not-started | blocker:none | note:E3 sliced into 7 tasks (slice-014 to slice-020). Fiscal logic library (slice-014) + dashboard layout (slice-015) have no deps and run first. Calendar (016), estimator (017), D212 guide (018) depend on slice-014 and can parallelize. Export (019) depends on D212 guide (018). Alerts (020) depends on calendar (016).
+2026-03-11 | E3 | done:3 | status:on-track | blocker:none | note:Wave 1 + partial Wave 2 complete. slice-014 (fiscal logic lib), slice-015 (dashboard layout+nav), slice-016 (fiscal calendar) done. All within E3 domain.
+2026-03-11 | E3 | done:5 | status:on-track | blocker:none | note:Wave 2 complete. slice-017 (tax estimator) and slice-018 (D212 guide) done. Remaining: slice-019 (D212 export, depends on 018) and slice-020 (email alerts, depends on 016). Starting Wave 3 next.
+2026-03-11 | E3 | done:7 | status:complete | blocker:none | note:All E3 tasks complete. Wave 3 done: slice-019 (D212 export + SPV instructions) and slice-020 (email alerts setup with migration, API, UI). All 7 tasks in testing. E6/E7 unblocked from E3 dependency.
 ```
 
 ---
@@ -79,4 +83,5 @@ Free text. Epic agents append observations, decisions, or notes here.
 ```
 2026-03-11 | PM | E1 sliced into 5 tasks: slice-001 (Next.js init), slice-002 (Tailwind), slice-003 (Supabase client), slice-004 (folder structure), slice-005 (ESLint). Tasks ordered by dependency -- slice-001 first (no deps), then slice-002/003/005 can run in parallel, slice-004 depends on 001+002.
 2026-03-11 | PM | E2 + E4 sliced in parallel. E2: 4 tasks (slice-006 to slice-009), E4: 4 tasks (slice-010 to slice-013). E2 and E4 are fully independent -- zero shared files. @meto-epic-e2 and @meto-epic-e4 can run simultaneously. E2 internal: slice-006 first, then slice-007 + slice-008 in parallel, slice-009 last. E4 internal: slice-010 first, then slice-011 + slice-012 + slice-013 in parallel.
+2026-03-11 | PM | E3 sliced into 7 tasks (slice-014 to slice-020). This is the MVP heart. Dependency graph: slice-014 (fiscal logic lib, L) + slice-015 (dashboard layout, S) have NO dependencies -- start immediately in parallel. Then slice-016 (calendar, M) + slice-017 (estimator, M) + slice-018 (D212 guide, L) all depend on slice-014 and can run in parallel. Finally slice-019 (D212 export, M) depends on slice-018, and slice-020 (email alerts, M) depends on slice-016. Total: 2L + 4M + 1S = estimated 30-48 dev hours. Critical path: slice-014 -> slice-018 -> slice-019.
 ```
