@@ -35,7 +35,7 @@ Aligned with MVP phases from product vision. Refine with @meto-pm.
 
 ## E5 -- Deploy & Production
 **Goal:** Deploy to Vercel, configure custom domain (pricepo.ro), set up environment variables for production, Supabase production project, and CI/CD pipeline.
-**Status:** Sliced -- 5 tasks (slice-021 through slice-025) in tasks-todo.md
+**Status:** Complete -- 5 tasks done (slice-021 through slice-025)
 **Tasks:** slice-021 (Supabase production setup), slice-022 (Vercel project + env vars), slice-023 (Custom domain pricepo.ro), slice-024 (Security headers + hardening), slice-025 (CI/CD GitHub Actions)
 
 ---
@@ -48,6 +48,11 @@ Aligned with MVP phases from product vision. Refine with @meto-pm.
 ---
 
 ## E7 -- SRL Features (Phase 3)
-**Goal:** SRL micro onboarding, dividend simulator, quarterly D100 calendar, Sole Associate Decision generator, and visual fiscal cash flow.
-**Status:** Not started (Phase 3 -- after ANAF integration)
-**Tasks:** To be sliced by @meto-pm
+**Goal:** SRL micro features: dividend simulator, quarterly D100 calendar, Sole Associate Decision generator, visual fiscal cash flow, and CASS dividend estimator. Built on existing SRL onboarding (E2) and dashboard infrastructure (E3).
+**Status:** Sliced -- 7 tasks (slice-026 through slice-032) in tasks-todo.md
+**Dependency graph:**
+- **Wave 1 (no deps, parallel):** slice-026 (SRL fiscal logic, L) + slice-032 (SRL dashboard nav, S)
+- **Wave 2 (after slice-026, parallel):** slice-027 (D100 calendar, M)
+- **Wave 3 (after slice-026 + slice-032, parallel):** slice-028 (Dividend simulator, M) + slice-029 (CASS estimator, S) + slice-030 (Decizie Asociat, M)
+- **Wave 4 (after slice-026 + slice-027 + slice-032):** slice-031 (Fiscal cash flow, M)
+**Tasks:** slice-026 (SRL fiscal logic library), slice-027 (D100 calendar deadlines), slice-028 (Dividend simulator), slice-029 (CASS dividend estimator), slice-030 (Sole Associate Decision generator), slice-031 (Fiscal cash flow visual), slice-032 (SRL dashboard + navigation)

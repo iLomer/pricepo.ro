@@ -1,3 +1,3 @@
 # Tasks Todo
 
-*(No tasks in todo)*
+*(No tasks remaining)*

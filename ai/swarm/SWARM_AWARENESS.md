@@ -10,7 +10,7 @@
 - **Mode:** swarm
 - **Started:** 2026-03-11
 - **Total epics:** 7
-- **Total tasks:** 25
+- **Total tasks:** 32
 - **Acceptance criteria:** 5 / 5 passed
 
 ---
@@ -25,7 +25,7 @@
 | E4 | Landing Page & Validation | @meto-epic-e4 | complete | 4/4 | none |
 | E5 | Deploy & Production | @meto-epic-e5 | complete | 5/5 | none |
 | E6 | ANAF Integration | @meto-epic-e6 | not-started | 0 | E2, E3 |
-| E7 | SRL Features | @meto-epic-e7 | not-started | 0 | E2, E3 |
+| E7 | SRL Features | @meto-epic-e7 | complete | 7/7 | none |
 
 Status values: `not-started` · `on-track` · `blocked` · `complete`
 
@@ -68,6 +68,10 @@ Append only. Never delete entries. One line per checkpoint.
 2026-03-11 | E5 | done:0 | status:not-started | blocker:none | note:E5 sliced into 5 tasks (slice-021 to slice-025). Dependency chain: slice-021 (Supabase prod) first, then slice-022 (Vercel + env vars), then slice-023 (domain) + slice-024 (security headers) + slice-025 (CI/CD) can parallelize. All tasks S or XS. Estimated 5-10 dev hours total.
 2026-03-11 | E5 | done:3 | status:on-track | blocker:none | note:slice-021 (Supabase prod setup docs), slice-022 (Vercel setup docs + .env.example + vercel.json), slice-023 (domain setup docs) completed. All documentation checklists created. Starting code tasks.
 2026-03-11 | E5 | done:5 | status:complete | blocker:none | note:All E5 tasks complete. slice-024 (security headers in next.config.ts, 404/500 error pages) and slice-025 (CI/CD pipeline with GitHub Actions, branch protection docs) finished. All 5 tasks moved to testing.
+2026-03-11 | E7 | done:0 | status:not-started | blocker:none | note:E7 sliced into 7 tasks (slice-026 to slice-032). SRL Features Phase 3. Wave 1: slice-026 (fiscal logic, L) + slice-032 (dashboard nav, S) in parallel. Wave 2: slice-027 (D100 calendar, M). Wave 3: slice-028 (dividend sim, M) + slice-029 (CASS est, S) + slice-030 (decizie asociat, M) in parallel. Wave 4: slice-031 (cash flow, M). Critical path: 026 -> 027 -> 031. Shared file conflict: slice-032 needs to update DashboardShell.tsx (E3 domain).
+2026-03-11 | E7 | done:3 | status:on-track | blocker:none | note:Wave 1 + Wave 2 complete. slice-026 (SRL fiscal logic lib: types, constants, micro-tax, dividends, CASS), slice-032 (dashboard nav + SRL landing page), slice-027 (D100 deadlines with amounts). DashboardShell.tsx updated with SRL nav (conflict approved). Starting Wave 3 next.
+2026-03-11 | E7 | done:6 | status:on-track | blocker:none | note:Wave 3 complete. slice-028 (dividend simulator page), slice-029 (CASS dividend estimator with threshold warning + progress bar), slice-030 (decizie asociat unic generator with print/PDF export). Starting Wave 4 (slice-031 cash flow) next.
+2026-03-11 | E7 | done:7 | status:complete | blocker:none | note:All E7 tasks complete. Wave 4 done: slice-031 (fiscal cash flow visual with quarterly bar chart, monthly/average input modes, summary card). All 7 tasks moved to testing. Files: src/lib/fiscal/srl/ (6 files), src/components/srl/ (6 files), src/app/(dashboard)/srl/ (5 pages), DashboardShell.tsx (updated with SRL nav).
 ```
 
 ---
@@ -75,6 +79,7 @@ Append only. Never delete entries. One line per checkpoint.
 ## [swarm:conflicts]
 
 ```
+2026-03-11 | E7 | slice-032 needs to update src/app/(dashboard)/DashboardShell.tsx to add SRL nav items. This file is in E3 domain. Requires user approval before @meto-epic-e7 proceeds.
 ```
 
 ---
@@ -89,4 +94,5 @@ Free text. Epic agents append observations, decisions, or notes here.
 2026-03-11 | PM | E3 sliced into 7 tasks (slice-014 to slice-020). This is the MVP heart. Dependency graph: slice-014 (fiscal logic lib, L) + slice-015 (dashboard layout, S) have NO dependencies -- start immediately in parallel. Then slice-016 (calendar, M) + slice-017 (estimator, M) + slice-018 (D212 guide, L) all depend on slice-014 and can parallelize. Finally slice-019 (D212 export, M) depends on slice-018, and slice-020 (email alerts, M) depends on slice-016. Total: 2L + 4M + 1S = estimated 30-48 dev hours. Critical path: slice-014 -> slice-018 -> slice-019.
 2026-03-11 | PM | E5 sliced into 5 tasks (slice-021 to slice-025). Deploy & Production epic. Dependency chain: slice-021 (Supabase prod setup, S) -> slice-022 (Vercel project + env vars, S) -> then slice-023 (custom domain, XS) + slice-024 (security headers, S) + slice-025 (CI/CD pipeline, S) can all run in parallel. Note: slice-021 and slice-022 involve manual steps (Supabase dashboard, Vercel dashboard, DNS config). E5 domain: /vercel.json, /.github/, next.config.ts (security headers only). Total estimated: 5-10 dev hours.
 2026-03-11 | E5 | All 5 E5 tasks completed. Documentation checklists for manual steps (Supabase, Vercel, DNS) in docs/deploy/. Code changes: security headers in next.config.ts, error pages (404/500), CI/CD pipeline in .github/workflows/ci.yml, vercel.json, .env.example updated. No domain conflicts -- all files within E5 ownership.
+2026-03-11 | PM | E7 sliced into 7 tasks (slice-026 to slice-032). SRL Features Phase 3. Total: 1L + 4M + 2S = estimated 22-36 dev hours. Key fiscal concepts: micro tax 1%/3% on revenue (not profit), D100 quarterly, dividends 5% tax + CASS 10% if over 6x minimum wage threshold. Minimum gross salary 2026: 4,050 lei/month. Note: existing FISCAL_CONSTANTS_2026 has 3,700 lei -- slice-026 creates separate SRL constants with 4,050. Shared file conflict flagged: DashboardShell.tsx update needed by slice-032.
 ```

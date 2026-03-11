@@ -225,3 +225,129 @@ Manual setup task. Checklist at `docs/deploy/custom-domain-setup.md`.
 - [x] Branch protection rule documented (require CI to pass before merge) -- user sets in GitHub settings
 
 ---
+
+## [slice-026] -- SRL Fiscal Logic Library
+**Epic:** E7 | **Size:** L | **Depends on:** none (E3 slice-014 complete)
+**Started: 2026-03-11 | Agent: meto-epic-E7**
+**Completed: 2026-03-11 | Files changed: src/lib/fiscal/srl/types.ts, src/lib/fiscal/srl/constants.ts, src/lib/fiscal/srl/micro-tax.ts, src/lib/fiscal/srl/dividends.ts, src/lib/fiscal/srl/cass-dividends.ts, src/lib/fiscal/srl/index.ts, src/lib/fiscal/index.ts**
+
+**Acceptance Criteria**
+- [x] New file `src/lib/fiscal/srl/types.ts` with SRL-specific types: `SRLMicroTaxBreakdown`, `DividendBreakdown`, `CASSDividendResult`, `SRLFiscalConstants`
+- [x] New file `src/lib/fiscal/srl/constants.ts` with 2026 SRL constants: micro tax rates (1%, 3%), dividend tax rate (5%), CASS rate on dividends (10%), minimum gross salary 4,050 lei/month, CASS threshold 6x minimum wages (24,300 lei), CASS cap 60x minimum wages (243,000 lei)
+- [x] New file `src/lib/fiscal/srl/micro-tax.ts`: pure function `calculateMicroTax(revenue: number, regime: 'micro_1' | 'micro_3')` returns quarterly and annual micro tax amounts
+- [x] New file `src/lib/fiscal/srl/dividends.ts`: pure function `calculateDividendNet(grossDividend: number, annualDividendsTotal: number)` returns: dividend tax (5%), CASS obligation (10% if over threshold), net amount in hand, effective tax rate
+- [x] New file `src/lib/fiscal/srl/cass-dividends.ts`: pure function `calculateCASSDividend(annualDividendsTotal: number)` returns: whether CASS applies, CASS amount, threshold used, warning message (Romanian) if near/over threshold
+- [x] New file `src/lib/fiscal/srl/index.ts` barrel export
+- [x] Update `src/lib/fiscal/index.ts` to re-export SRL module
+- [x] All functions are pure (no side effects, no Supabase calls)
+- [x] TypeScript compiles clean with strict mode
+- [x] Unit-testable: each function takes primitives, returns typed objects
+
+---
+
+## [slice-032] -- SRL Dashboard Section and Navigation
+**Epic:** E7 | **Size:** S | **Depends on:** none (E3 slice-015 complete)
+**Started: 2026-03-11 | Agent: meto-epic-E7**
+**Completed: 2026-03-11 | Files changed: src/app/(dashboard)/DashboardShell.tsx, src/app/(dashboard)/srl/page.tsx, src/components/srl/SRLDashboardCards.tsx**
+
+**Acceptance Criteria**
+- [x] New page `src/app/(dashboard)/srl/page.tsx` -- SRL dashboard landing with cards linking to: Simulator Dividende, CASS Dividende, Decizie Asociat Unic, Cash Flow Fiscal, Calendar D100
+- [x] Each card shows: icon, title (Romanian), short description, link
+- [x] Dashboard navigation (in DashboardShell) conditionally shows SRL section when `entityType === 'srl'`
+- [x] SRL nav items: "Panou SRL" (overview), "Simulator Dividende", "CASS Dividende", "Decizie Asociat", "Cash Flow"
+- [x] PFA users do NOT see SRL navigation items
+- [x] SRL landing page includes a brief educational intro: "Instrumentele tale fiscale pentru SRL micro-intreprindere"
+- [x] New component `src/components/srl/SRLDashboardCards.tsx`
+- [x] Responsive grid layout, consistent with existing dashboard styling
+- [x] TypeScript compiles clean
+
+---
+
+## [slice-027] -- SRL Quarterly D100 Calendar
+**Epic:** E7 | **Size:** M | **Depends on:** slice-026
+**Started: 2026-03-11 | Agent: meto-epic-E7**
+**Completed: 2026-03-11 | Files changed: src/lib/fiscal/srl/srl-deadlines.ts, src/lib/fiscal/srl/index.ts, src/lib/fiscal/index.ts**
+
+**Acceptance Criteria**
+- [x] New file `src/lib/fiscal/srl/srl-deadlines.ts` with `getAllSRLDeadlines()` returning quarterly D100 deadlines (Q1: Apr 25, Q2: Jul 25, Q3: Oct 25, Q4: Jan 25 next year) and quarterly micro tax payment deadlines
+- [x] Deadlines use existing `FiscalDeadline` type with `applicableRegimes: ['micro_1', 'micro_3']`
+- [x] Each D100 deadline includes Romanian description explaining what to file and where
+- [x] `getSRLDeadlinesWithAmounts(quarterlyRevenues: number[], regime: 'micro_1' | 'micro_3')` enriches deadlines with calculated tax amounts per quarter
+- [x] Update `src/lib/fiscal/srl/index.ts` to export deadline functions
+- [x] Existing `filterDeadlines` in `pfa-deadlines.ts` NOT modified -- SRL deadlines are a separate flow
+- [x] TypeScript compiles clean
+
+---
+
+## [slice-028] -- Dividend Simulator Page
+**Epic:** E7 | **Size:** M | **Depends on:** slice-026, slice-032
+**Started: 2026-03-11 | Agent: meto-epic-E7**
+**Completed: 2026-03-11 | Files changed: src/app/(dashboard)/srl/simulator-dividende/page.tsx, src/components/srl/DividendSimulator.tsx**
+
+**Acceptance Criteria**
+- [x] New page `src/app/(dashboard)/srl/simulator-dividende/page.tsx`
+- [x] Input form: gross dividend amount (lei), running total of dividends this year
+- [x] Output displays: gross amount, dividend tax (5%), CASS on dividends (if applicable), net amount in hand, effective tax rate percentage
+- [x] Payment timeline section: when dividend tax is due (D100 next quarter), when CASS is due (D212 annually for associate)
+- [x] Educational callout explaining: "Dividendele se pot distribui doar din profitul net contabil. Impozitul pe dividende (5%) se retine la sursa de catre SRL."
+- [x] Responsive layout, Romanian labels, Tailwind styling consistent with existing dashboard
+- [x] New component `src/components/srl/DividendSimulator.tsx` (client component with state)
+- [x] Uses `calculateDividendNet` and `calculateCASSDividend` from slice-026
+- [x] TypeScript compiles clean
+
+---
+
+## [slice-029] -- CASS Dividend Estimator with Threshold Warning
+**Epic:** E7 | **Size:** S | **Depends on:** slice-026, slice-032
+**Started: 2026-03-11 | Agent: meto-epic-E7**
+**Completed: 2026-03-11 | Files changed: src/app/(dashboard)/srl/cass-dividende/page.tsx, src/components/srl/CASSDividendEstimator.tsx**
+
+**Acceptance Criteria**
+- [x] New page `src/app/(dashboard)/srl/cass-dividende/page.tsx`
+- [x] Input: total planned annual dividends (lei)
+- [x] Output displays: current threshold (6x minimum wage = 24,300 lei for 2026), whether CASS applies (yes/no), CASS amount if applicable (10%, capped at base of 60x minimum wages = 243,000 lei), amount remaining before threshold is crossed
+- [x] Visual progress bar showing how close user is to the 6x threshold
+- [x] Warning banner (yellow/red) when over threshold, with Romanian text
+- [x] Educational section explaining the 6/60 rule in plain Romanian
+- [x] New component `src/components/srl/CASSDividendEstimator.tsx` (client component)
+- [x] Uses `calculateCASSDividend` from slice-026
+- [x] TypeScript compiles clean
+
+---
+
+## [slice-030] -- Sole Associate Decision Generator
+**Epic:** E7 | **Size:** M | **Depends on:** slice-026, slice-032
+**Started: 2026-03-11 | Agent: meto-epic-E7**
+**Completed: 2026-03-11 | Files changed: src/app/(dashboard)/srl/decizie-asociat/page.tsx, src/components/srl/DecizieAsociatForm.tsx, src/components/srl/DecizieAsociatPreview.tsx**
+
+**Acceptance Criteria**
+- [x] New page `src/app/(dashboard)/srl/decizie-asociat/page.tsx`
+- [x] Form inputs: company name (SRL), CUI, J number (trade registry), associate full name, associate CNP, gross dividend amount, distribution date, fiscal year the profit comes from
+- [x] Preview section showing the formatted decision document in Romanian legal format
+- [x] The document text follows standard Romanian legal template for "Decizia Asociatului Unic nr. [X]/[date]"
+- [x] Export as PDF button (using browser print)
+- [x] New component `src/components/srl/DecizieAsociatForm.tsx` (client component for form)
+- [x] New component `src/components/srl/DecizieAsociatPreview.tsx` (document preview)
+- [x] Generated document includes a disclaimer: "Document generat automat. Verificati conformitatea cu legislatia in vigoare."
+- [x] TypeScript compiles clean, responsive layout
+
+---
+
+## [slice-031] -- Fiscal Cash Flow Visual
+**Epic:** E7 | **Size:** M | **Depends on:** slice-026, slice-027, slice-032
+**Started: 2026-03-11 | Agent: meto-epic-E7**
+**Completed: 2026-03-11 | Files changed: src/app/(dashboard)/srl/cash-flow/page.tsx, src/components/srl/FiscalCashFlow.tsx**
+
+**Acceptance Criteria**
+- [x] New page `src/app/(dashboard)/srl/cash-flow/page.tsx`
+- [x] Input section: monthly revenue input (12 fields, or single average), regime (micro_1/micro_3, pre-filled from profile)
+- [x] Visual output: bar chart showing Q1-Q4 with: quarterly micro tax due, cumulative tax burden, net cash after taxes
+- [x] Each quarter shows: revenue for quarter, micro tax amount (1% or 3%), D100 payment deadline date, running total of taxes paid YTD
+- [x] Summary card: total annual revenue, total annual micro tax, average monthly tax set-aside recommendation
+- [x] Built with CSS/Tailwind (no heavy chart library -- styled divs/bars)
+- [x] New component `src/components/srl/FiscalCashFlow.tsx` (client component)
+- [x] Uses `calculateQuarterlyMicroTax` from slice-026 and deadline data from slice-027
+- [x] Responsive, Romanian labels, educational tooltips on hover explaining each obligation
+- [x] TypeScript compiles clean
+
+---
