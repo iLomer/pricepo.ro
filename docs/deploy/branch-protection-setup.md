@@ -4,7 +4,7 @@ Configure branch protection on the `main` branch to enforce CI checks before mer
 
 ## Setup Steps
 
-1. Go to GitHub repository: `https://github.com/iLomer/pricepo.ro`
+1. Go to GitHub repository: `https://github.com/iLomer/prevo.ro`
 2. Navigate to **Settings > Branches**
 3. Click **Add branch protection rule**
 4. Configure:

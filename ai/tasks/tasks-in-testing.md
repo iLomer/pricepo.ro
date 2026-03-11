@@ -154,7 +154,7 @@
 - [x] All 3 existing migrations applied to production (fiscal_profiles, waitlist, alert_preferences) -- documented steps
 - [x] RLS policies verified on production (fiscal_profiles, waitlist, alert_preferences) -- documented verification checklist
 - [x] Production Supabase URL and anon key documented (not committed to repo) -- noted in checklist
-- [x] Auth settings configured: site URL set to https://pricepo.ro, redirect URLs include https://pricepo.ro/auth/callback -- documented
+- [x] Auth settings configured: site URL set to https://prevo.ro, redirect URLs include https://prevo.ro/auth/callback -- documented
 
 **Notes**
 Manual setup task. Checklist created at `docs/deploy/supabase-production-setup.md`.
@@ -179,18 +179,18 @@ Manual setup task. Checklist at `docs/deploy/vercel-project-setup.md`. `.env.exa
 
 ---
 
-## [slice-023] -- Custom Domain Configuration (pricepo.ro)
+## [slice-023] -- Custom Domain Configuration (prevo.ro)
 **Epic:** E5 | **Size:** XS | **Depends on:** slice-022
 **Started: 2026-03-11 | Agent: meto-epic-E5**
 **Completed: 2026-03-11 | Files changed: docs/deploy/custom-domain-setup.md**
 
 **Acceptance Criteria**
-- [x] Custom domain pricepo.ro added to Vercel project -- documented steps
+- [x] Custom domain prevo.ro added to Vercel project -- documented steps
 - [x] DNS records configured (A record and/or CNAME as Vercel requires) -- documented
 - [x] SSL certificate provisioned and active (Vercel handles automatically) -- documented
-- [x] https://pricepo.ro loads the landing page correctly -- documented verification
-- [x] https://www.pricepo.ro redirects to https://pricepo.ro (or vice versa, consistent) -- documented
-- [x] Supabase Auth redirect URLs updated to include https://pricepo.ro/auth/callback -- documented
+- [x] https://prevo.ro loads the landing page correctly -- documented verification
+- [x] https://www.prevo.ro redirects to https://prevo.ro (or vice versa, consistent) -- documented
+- [x] Supabase Auth redirect URLs updated to include https://prevo.ro/auth/callback -- documented
 
 **Notes**
 Manual setup task. Checklist at `docs/deploy/custom-domain-setup.md`.

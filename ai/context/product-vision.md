@@ -1,4 +1,4 @@
-# Product Vision — Prevo (pricepo.ro)
+# Product Vision — Prevo (prevo.ro)
 
 ## What We Are Building
 Prevo — the first fiscal education platform for Romanian PFA and SRL owners. Not accounting software, not a digital accountant — active fiscal education personalized to your entity, updated with current legislation, actionable from day one.

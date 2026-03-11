@@ -1,4 +1,4 @@
-# Epics -- Prevo (pricepo.ro)
+# Epics -- Prevo (prevo.ro)
 
 High-level orientation. Full task definitions live in `tasks-backlog.md`.
 Aligned with MVP phases from product vision. Refine with @meto-pm.
@@ -27,16 +27,16 @@ Aligned with MVP phases from product vision. Refine with @meto-pm.
 ---
 
 ## E4 -- Landing Page & Validation
-**Goal:** Build a waitlist landing page for pricepo.ro. Communicate the Prevo value proposition, collect emails, target 200 signups in 30 days organic. Deploy to Vercel with custom domain.
+**Goal:** Build a waitlist landing page for prevo.ro. Communicate the Prevo value proposition, collect emails, target 200 signups in 30 days organic. Deploy to Vercel with custom domain.
 **Status:** Complete -- 4 tasks done (slice-010 through slice-013)
 **Tasks:** slice-010 (Hero + value prop), slice-011 (Waitlist email collection), slice-012 (SEO + OG tags), slice-013 (Analytics)
 
 ---
 
 ## E5 -- Deploy & Production
-**Goal:** Deploy to Vercel, configure custom domain (pricepo.ro), set up environment variables for production, Supabase production project, and CI/CD pipeline.
+**Goal:** Deploy to Vercel, configure custom domain (prevo.ro), set up environment variables for production, Supabase production project, and CI/CD pipeline.
 **Status:** Complete -- 5 tasks done (slice-021 through slice-025)
-**Tasks:** slice-021 (Supabase production setup), slice-022 (Vercel project + env vars), slice-023 (Custom domain pricepo.ro), slice-024 (Security headers + hardening), slice-025 (CI/CD GitHub Actions)
+**Tasks:** slice-021 (Supabase production setup), slice-022 (Vercel project + env vars), slice-023 (Custom domain prevo.ro), slice-024 (Security headers + hardening), slice-025 (CI/CD GitHub Actions)
 
 ---
 

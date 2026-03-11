@@ -1,19 +1,19 @@
-# Custom Domain Configuration -- pricepo.ro
+# Custom Domain Configuration -- prevo.ro
 
-Checklist for connecting the pricepo.ro domain to the Vercel deployment.
+Checklist for connecting the prevo.ro domain to the Vercel deployment.
 
 ## 1. Add Domain to Vercel
 
 1. Go to Vercel project > **Settings > Domains**
-2. Add domain: `pricepo.ro`
-3. Add domain: `www.pricepo.ro`
-4. Set redirect: `www.pricepo.ro` redirects to `pricepo.ro` (recommended)
+2. Add domain: `prevo.ro`
+3. Add domain: `www.prevo.ro`
+4. Set redirect: `www.prevo.ro` redirects to `prevo.ro` (recommended)
 
 ## 2. Configure DNS Records
 
 In your domain registrar's DNS management panel, add the records Vercel specifies. Typically:
 
-### For apex domain (pricepo.ro)
+### For apex domain (prevo.ro)
 
 | Type | Name | Value |
 |---|---|---|
@@ -40,9 +40,9 @@ In your domain registrar's DNS management panel, add the records Vercel specifie
 
 ## 5. Verify
 
-- [ ] `https://pricepo.ro` loads the landing page
-- [ ] `https://www.pricepo.ro` redirects to `https://pricepo.ro`
-- [ ] `http://pricepo.ro` redirects to `https://pricepo.ro`
+- [ ] `https://prevo.ro` loads the landing page
+- [ ] `https://www.prevo.ro` redirects to `https://prevo.ro`
+- [ ] `http://prevo.ro` redirects to `https://prevo.ro`
 - [ ] SSL certificate is valid (padlock icon in browser)
 - [ ] All pages load correctly (landing, auth, dashboard)
 
@@ -51,12 +51,12 @@ In your domain registrar's DNS management panel, add the records Vercel specifie
 After domain is active, verify in Supabase dashboard:
 
 1. Go to **Authentication > URL Configuration**
-2. Confirm **Site URL** is set to `https://pricepo.ro`
+2. Confirm **Site URL** is set to `https://prevo.ro`
 3. Confirm **Redirect URLs** includes:
-   - `https://pricepo.ro/auth/callback`
+   - `https://prevo.ro/auth/callback`
    - (Keep `http://localhost:3000/auth/callback` for local development)
 
 ## Notes
 
-- Subdomain configuration (e.g., `app.pricepo.ro`) is out of scope for now
+- Subdomain configuration (e.g., `app.prevo.ro`) is out of scope for now
 - Email DNS records (SPF, DKIM, DMARC) are not needed yet -- configure when custom email sending is set up

@@ -1,4 +1,4 @@
-# Decisions Log — Prevo (pricepo.ro)
+# Decisions Log — Prevo (prevo.ro)
 
 Settled decisions. Never re-debate these.
 
@@ -6,7 +6,7 @@ Settled decisions. Never re-debate these.
 
 ## D001 — Product Name: Prevo
 **Date:** 2026-03-11
-**Decision:** The product is called Prevo, hosted at pricepo.ro
+**Decision:** The product is called Prevo, hosted at prevo.ro
 **Alternatives considered:** Generic naming
 **Reason:** Prevo communicates fiscal focus, is memorable, and differentiates from accounting software
 **Consequences:** All branding, copy, and metadata use "Prevo"

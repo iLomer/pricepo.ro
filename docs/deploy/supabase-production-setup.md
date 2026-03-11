@@ -1,6 +1,6 @@
 # Supabase Production Project Setup
 
-Checklist for setting up the production Supabase project for Prevo (pricepo.ro).
+Checklist for setting up the production Supabase project for Prevo (prevo.ro).
 
 ## 1. Create Production Project
 
@@ -64,8 +64,8 @@ After applying migrations, verify in **Table Editor** or **SQL Editor**:
 
 Go to **Authentication > URL Configuration**:
 
-- [ ] **Site URL:** `https://pricepo.ro`
-- [ ] **Redirect URLs:** add `https://pricepo.ro/auth/callback`
+- [ ] **Site URL:** `https://prevo.ro`
+- [ ] **Redirect URLs:** add `https://prevo.ro/auth/callback`
 - [ ] (Optional) Add `http://localhost:3000/auth/callback` for local dev if not already present
 
 Go to **Authentication > Providers > Email**:

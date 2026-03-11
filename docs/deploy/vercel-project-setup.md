@@ -1,12 +1,12 @@
 # Vercel Project and Environment Variables Setup
 
-Checklist for deploying Prevo (pricepo.ro) on Vercel.
+Checklist for deploying Prevo (prevo.ro) on Vercel.
 
 ## 1. Create Vercel Project
 
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Click "Add New" > "Project"
-3. Import the GitHub repository: `iLomer/pricepo.ro`
+3. Import the GitHub repository: `iLomer/prevo.ro`
 4. Settings:
    - **Framework Preset:** Next.js (auto-detected)
    - **Root Directory:** `./` (default)

@@ -1,4 +1,4 @@
-# Tech Stack — Prevo (pricepo.ro)
+# Tech Stack — Prevo (prevo.ro)
 
 ## Stack Overview
 

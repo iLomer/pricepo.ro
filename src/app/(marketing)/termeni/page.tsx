@@ -20,7 +20,7 @@ export default function TermeniPage() {
             1. Informatii generale
           </h2>
           <p>
-            Prevo (pricepo.ro) este o platforma de educatie fiscala destinata
+            Prevo (prevo.ro) este o platforma de educatie fiscala destinata
             persoanelor fizice autorizate (PFA) si societatilor cu raspundere
             limitata (SRL) din Romania. Platforma ofera instrumente de calcul,
             calendare fiscale si ghiduri informative.

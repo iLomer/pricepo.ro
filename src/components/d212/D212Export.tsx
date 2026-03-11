@@ -77,7 +77,7 @@ function generatePDFContent(rows: ExportRow[], breakdown: TaxBreakdown): string 
   lines.push(`Venit net dupa taxe: ${formatLei(breakdown.netIncome)} lei`);
   lines.push("");
   lines.push("---");
-  lines.push("Generat de Prevo (pricepo.ro)");
+  lines.push("Generat de Prevo (prevo.ro)");
   lines.push("Aceste valori sunt estimative. Verifica intotdeauna cu legislatia in vigoare.");
 
   return lines.join("\n");
