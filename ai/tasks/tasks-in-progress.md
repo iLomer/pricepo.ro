@@ -2,22 +2,19 @@
 
 ---
 
-## [slice-002] -- Configure Tailwind CSS with Fiskio Design Tokens
+## [slice-003] -- Set Up Supabase Client and Environment Variables
 **Epic:** E1 | **Size:** S | **Depends on:** slice-001
 **Started: 2026-03-11 | Agent: meto-epic-E1**
 
 **User Story**
-As a developer, I want Tailwind CSS configured with base design tokens, so that all UI work uses consistent styling from the start.
+As a developer, I want the Supabase client configured with proper environment variables, so that database and auth integrations can be built on top of it.
 
 **Acceptance Criteria**
-- [ ] Tailwind CSS installed and configured in `tailwind.config.ts`
-- [ ] Base color palette defined (primary, secondary, accent, neutral, error, success, warning)
-- [ ] Custom font family configured (system font stack or chosen font)
-- [ ] Global CSS file (`src/app/globals.css`) includes Tailwind directives (`@tailwind base/components/utilities`)
-- [ ] A simple test element renders with Tailwind classes correctly on `npm run dev`
-- [ ] Dark mode class strategy configured (manual toggle, not system preference)
-
-**Out of Scope**
-- Component library or reusable components
-- Full brand identity or logo
-- Dark mode toggle UI (just the config)
+- [ ] `@supabase/supabase-js` installed
+- [ ] `@supabase/ssr` installed for server-side usage in Next.js App Router
+- [ ] Browser client helper created at `src/lib/supabase/client.ts`
+- [ ] Server client helper created at `src/lib/supabase/server.ts`
+- [ ] `.env.local` created with `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` placeholders
+- [ ] `.env.example` created with all required env vars documented (no real values)
+- [ ] `.env.local` is in `.gitignore`
+- [ ] TypeScript types compile without errors
