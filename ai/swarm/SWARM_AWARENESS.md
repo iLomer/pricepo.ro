@@ -11,7 +11,7 @@
 - **Started:** 2026-03-11
 - **Total epics:** 7
 - **Total tasks:** 5
-- **Acceptance criteria:** 0 / 5 passed
+- **Acceptance criteria:** 3 / 5 passed
 
 ---
 
@@ -19,7 +19,7 @@
 
 | Epic ID | Name | Agent | Status | Tasks Done | Blocker |
 |---|---|---|---|---|---|
-| E1 | Project Setup | @meto-epic-e1 | on-track | 0/5 | none |
+| E1 | Project Setup | @meto-epic-e1 | on-track | 3/5 | none |
 | E2 | Auth & Fiscal Profile | @meto-epic-e2 | not-started | 0 | E1 |
 | E3 | Core PFA Features | @meto-epic-e3 | not-started | 0 | E1, E2 |
 | E4 | Landing Page & Validation | @meto-epic-e4 | not-started | 0 | E1 |
@@ -53,6 +53,7 @@ Append only. Never delete entries. One line per checkpoint.
 
 ```
 2026-03-11 | E1 | done:0 | status:on-track | blocker:none | note:E1 sliced into 5 tasks, placed in tasks-todo.md
+2026-03-11 | E1 | done:3 | status:on-track | blocker:none | note:slice-001 (Next.js init), slice-002 (Tailwind v4 tokens), slice-003 (Supabase client) completed. Remaining: slice-005 (ESLint), slice-004 (folder structure)
 ```
 
 ---
