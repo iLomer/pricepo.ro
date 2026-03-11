@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { SignOutButton } from "@/components/auth/SignOutButton";
+import { DashboardShell } from "./DashboardShell";
+import type { FiscalRegime, EntityType } from "@/types";
 
 export default async function DashboardLayout({
   children,
@@ -20,7 +21,7 @@ export default async function DashboardLayout({
   // Check if user has completed onboarding
   const { data: profile } = await supabase
     .from("fiscal_profiles")
-    .select("id")
+    .select("id, entity_type, regime")
     .eq("id", user.id)
     .single();
 
@@ -29,14 +30,11 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-secondary-50">
-      <header className="border-b border-secondary-200 bg-background">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-          <span className="text-lg font-bold text-primary-700">Fiskio</span>
-          <SignOutButton />
-        </div>
-      </header>
+    <DashboardShell
+      entityType={profile.entity_type as EntityType}
+      regime={profile.regime as FiscalRegime}
+    >
       {children}
-    </div>
+    </DashboardShell>
   );
 }

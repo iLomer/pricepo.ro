@@ -23,3 +23,12 @@ export interface FiscalProfile {
   created_at: string;
   updated_at: string;
 }
+
+export interface AlertPreference {
+  id: string;
+  user_id: string;
+  email_alerts_enabled: boolean;
+  alert_days_before: number[];
+  created_at: string;
+  updated_at: string;
+}
