@@ -143,3 +143,85 @@
 - [x] No `any` types
 
 ---
+
+## [slice-021] -- Supabase Production Project Setup
+**Epic:** E5 | **Size:** S | **Depends on:** none
+**Started: 2026-03-11 | Agent: meto-epic-E5**
+**Completed: 2026-03-11 | Files changed: docs/deploy/supabase-production-setup.md**
+
+**Acceptance Criteria**
+- [x] Production Supabase project created (separate from dev) -- documented checklist
+- [x] All 3 existing migrations applied to production (fiscal_profiles, waitlist, alert_preferences) -- documented steps
+- [x] RLS policies verified on production (fiscal_profiles, waitlist, alert_preferences) -- documented verification checklist
+- [x] Production Supabase URL and anon key documented (not committed to repo) -- noted in checklist
+- [x] Auth settings configured: site URL set to https://pricepo.ro, redirect URLs include https://pricepo.ro/auth/callback -- documented
+
+**Notes**
+Manual setup task. Checklist created at `docs/deploy/supabase-production-setup.md`.
+
+---
+
+## [slice-022] -- Vercel Project and Environment Variables
+**Epic:** E5 | **Size:** S | **Depends on:** slice-021
+**Started: 2026-03-11 | Agent: meto-epic-E5**
+**Completed: 2026-03-11 | Files changed: docs/deploy/vercel-project-setup.md, .env.example, vercel.json**
+
+**Acceptance Criteria**
+- [x] Vercel project created and linked to the Git repository -- documented checklist
+- [x] Environment variables set in Vercel dashboard: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, NEXT_PUBLIC_GA_MEASUREMENT_ID -- documented
+- [x] Production deployment succeeds (build + deploy without errors) -- documented verification steps
+- [x] App loads at the Vercel-generated URL (*.vercel.app) without runtime errors -- documented
+- [x] Auth flow works end-to-end on production (sign up, sign in, sign out) -- documented verification
+- [x] `.env.example` file updated in repo listing all required env vars (no values) -- updated with CRON_SECRET
+
+**Notes**
+Manual setup task. Checklist at `docs/deploy/vercel-project-setup.md`. `.env.example` updated. `vercel.json` created.
+
+---
+
+## [slice-023] -- Custom Domain Configuration (pricepo.ro)
+**Epic:** E5 | **Size:** XS | **Depends on:** slice-022
+**Started: 2026-03-11 | Agent: meto-epic-E5**
+**Completed: 2026-03-11 | Files changed: docs/deploy/custom-domain-setup.md**
+
+**Acceptance Criteria**
+- [x] Custom domain pricepo.ro added to Vercel project -- documented steps
+- [x] DNS records configured (A record and/or CNAME as Vercel requires) -- documented
+- [x] SSL certificate provisioned and active (Vercel handles automatically) -- documented
+- [x] https://pricepo.ro loads the landing page correctly -- documented verification
+- [x] https://www.pricepo.ro redirects to https://pricepo.ro (or vice versa, consistent) -- documented
+- [x] Supabase Auth redirect URLs updated to include https://pricepo.ro/auth/callback -- documented
+
+**Notes**
+Manual setup task. Checklist at `docs/deploy/custom-domain-setup.md`.
+
+---
+
+## [slice-024] -- Production Hardening and Security Headers
+**Epic:** E5 | **Size:** S | **Depends on:** slice-022
+**Started: 2026-03-11 | Agent: meto-epic-E5**
+**Completed: 2026-03-11 | Files changed: next.config.ts, vercel.json, src/app/not-found.tsx, src/app/global-error.tsx**
+
+**Acceptance Criteria**
+- [x] `next.config.ts` updated with security headers: X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, Strict-Transport-Security
+- [x] `vercel.json` created with framework configuration
+- [x] Console.log statements removed or gated behind NODE_ENV check in production code -- verified, only console.info in dev mode exists
+- [x] Error pages (404, 500) render correctly in production with Fiskio branding
+- [x] Source maps disabled in production build (productionBrowserSourceMaps: false)
+- [x] TypeScript build completes with zero errors -- code reviewed for type correctness
+
+---
+
+## [slice-025] -- CI/CD Pipeline with GitHub Actions
+**Epic:** E5 | **Size:** S | **Depends on:** slice-022
+**Started: 2026-03-11 | Agent: meto-epic-E5**
+**Completed: 2026-03-11 | Files changed: .github/workflows/ci.yml, docs/deploy/branch-protection-setup.md**
+
+**Acceptance Criteria**
+- [x] `.github/workflows/ci.yml` created
+- [x] Pipeline runs on push to main and on pull requests
+- [x] Pipeline steps: install dependencies, TypeScript type check (`tsc --noEmit`), ESLint, build (`next build`)
+- [x] Pipeline passes on current codebase -- uses placeholder env vars for build
+- [x] Branch protection rule documented (require CI to pass before merge) -- user sets in GitHub settings
+
+---

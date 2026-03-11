@@ -1,3 +1,3 @@
 # Tasks Todo
 
-*(No tasks remaining for E3)*
+*(No tasks in todo)*

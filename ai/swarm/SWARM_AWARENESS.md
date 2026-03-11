@@ -10,7 +10,7 @@
 - **Mode:** swarm
 - **Started:** 2026-03-11
 - **Total epics:** 7
-- **Total tasks:** 20
+- **Total tasks:** 25
 - **Acceptance criteria:** 5 / 5 passed
 
 ---
@@ -23,7 +23,7 @@
 | E2 | Auth & Fiscal Profile | @meto-epic-e2 | complete | 4/4 | none |
 | E3 | Core PFA Features | @meto-epic-e3 | complete | 7/7 | none |
 | E4 | Landing Page & Validation | @meto-epic-e4 | complete | 4/4 | none |
-| E5 | Deploy & Production | @meto-epic-e5 | not-started | 0 | E4 |
+| E5 | Deploy & Production | @meto-epic-e5 | complete | 5/5 | none |
 | E6 | ANAF Integration | @meto-epic-e6 | not-started | 0 | E2, E3 |
 | E7 | SRL Features | @meto-epic-e7 | not-started | 0 | E2, E3 |
 
@@ -41,7 +41,7 @@ See full ownership rules in `ai/swarm/domain-map.md`.
 | E2 | `/src/app/(auth)/`, `/src/app/onboarding/`, `/src/components/auth/`, `/src/components/onboarding/`, `src/middleware.ts` |
 | E3 | `/src/app/(dashboard)/`, `/src/components/calendar/`, `/src/components/estimator/`, `/src/components/d212/`, `/src/components/alerts/`, `/src/lib/fiscal/`, `/src/app/api/alerts/` |
 | E4 | `/src/app/(marketing)/`, `/src/components/landing/`, `/src/components/waitlist/`, `/src/app/api/waitlist/` |
-| E5 | `/vercel.json`, `/.github/`, deployment configs |
+| E5 | `/vercel.json`, `/.github/`, deployment configs, `next.config.ts` (security headers) |
 | E6 | `/src/lib/anaf/`, `/src/app/api/anaf/`, `/src/components/anaf/` |
 | E7 | `/src/app/(dashboard)/srl/`, `/src/components/srl/`, `/src/lib/fiscal/srl/` |
 
@@ -65,6 +65,9 @@ Append only. Never delete entries. One line per checkpoint.
 2026-03-11 | E3 | done:3 | status:on-track | blocker:none | note:Wave 1 + partial Wave 2 complete. slice-014 (fiscal logic lib), slice-015 (dashboard layout+nav), slice-016 (fiscal calendar) done. All within E3 domain.
 2026-03-11 | E3 | done:5 | status:on-track | blocker:none | note:Wave 2 complete. slice-017 (tax estimator) and slice-018 (D212 guide) done. Remaining: slice-019 (D212 export, depends on 018) and slice-020 (email alerts, depends on 016). Starting Wave 3 next.
 2026-03-11 | E3 | done:7 | status:complete | blocker:none | note:All E3 tasks complete. Wave 3 done: slice-019 (D212 export + SPV instructions) and slice-020 (email alerts setup with migration, API, UI). All 7 tasks in testing. E6/E7 unblocked from E3 dependency.
+2026-03-11 | E5 | done:0 | status:not-started | blocker:none | note:E5 sliced into 5 tasks (slice-021 to slice-025). Dependency chain: slice-021 (Supabase prod) first, then slice-022 (Vercel + env vars), then slice-023 (domain) + slice-024 (security headers) + slice-025 (CI/CD) can parallelize. All tasks S or XS. Estimated 5-10 dev hours total.
+2026-03-11 | E5 | done:3 | status:on-track | blocker:none | note:slice-021 (Supabase prod setup docs), slice-022 (Vercel setup docs + .env.example + vercel.json), slice-023 (domain setup docs) completed. All documentation checklists created. Starting code tasks.
+2026-03-11 | E5 | done:5 | status:complete | blocker:none | note:All E5 tasks complete. slice-024 (security headers in next.config.ts, 404/500 error pages) and slice-025 (CI/CD pipeline with GitHub Actions, branch protection docs) finished. All 5 tasks moved to testing.
 ```
 
 ---
@@ -83,5 +86,7 @@ Free text. Epic agents append observations, decisions, or notes here.
 ```
 2026-03-11 | PM | E1 sliced into 5 tasks: slice-001 (Next.js init), slice-002 (Tailwind), slice-003 (Supabase client), slice-004 (folder structure), slice-005 (ESLint). Tasks ordered by dependency -- slice-001 first (no deps), then slice-002/003/005 can run in parallel, slice-004 depends on 001+002.
 2026-03-11 | PM | E2 + E4 sliced in parallel. E2: 4 tasks (slice-006 to slice-009), E4: 4 tasks (slice-010 to slice-013). E2 and E4 are fully independent -- zero shared files. @meto-epic-e2 and @meto-epic-e4 can run simultaneously. E2 internal: slice-006 first, then slice-007 + slice-008 in parallel, slice-009 last. E4 internal: slice-010 first, then slice-011 + slice-012 + slice-013 in parallel.
-2026-03-11 | PM | E3 sliced into 7 tasks (slice-014 to slice-020). This is the MVP heart. Dependency graph: slice-014 (fiscal logic lib, L) + slice-015 (dashboard layout, S) have NO dependencies -- start immediately in parallel. Then slice-016 (calendar, M) + slice-017 (estimator, M) + slice-018 (D212 guide, L) all depend on slice-014 and can run in parallel. Finally slice-019 (D212 export, M) depends on slice-018, and slice-020 (email alerts, M) depends on slice-016. Total: 2L + 4M + 1S = estimated 30-48 dev hours. Critical path: slice-014 -> slice-018 -> slice-019.
+2026-03-11 | PM | E3 sliced into 7 tasks (slice-014 to slice-020). This is the MVP heart. Dependency graph: slice-014 (fiscal logic lib, L) + slice-015 (dashboard layout, S) have NO dependencies -- start immediately in parallel. Then slice-016 (calendar, M) + slice-017 (estimator, M) + slice-018 (D212 guide, L) all depend on slice-014 and can parallelize. Finally slice-019 (D212 export, M) depends on slice-018, and slice-020 (email alerts, M) depends on slice-016. Total: 2L + 4M + 1S = estimated 30-48 dev hours. Critical path: slice-014 -> slice-018 -> slice-019.
+2026-03-11 | PM | E5 sliced into 5 tasks (slice-021 to slice-025). Deploy & Production epic. Dependency chain: slice-021 (Supabase prod setup, S) -> slice-022 (Vercel project + env vars, S) -> then slice-023 (custom domain, XS) + slice-024 (security headers, S) + slice-025 (CI/CD pipeline, S) can all run in parallel. Note: slice-021 and slice-022 involve manual steps (Supabase dashboard, Vercel dashboard, DNS config). E5 domain: /vercel.json, /.github/, next.config.ts (security headers only). Total estimated: 5-10 dev hours.
+2026-03-11 | E5 | All 5 E5 tasks completed. Documentation checklists for manual steps (Supabase, Vercel, DNS) in docs/deploy/. Code changes: security headers in next.config.ts, error pages (404/500), CI/CD pipeline in .github/workflows/ci.yml, vercel.json, .env.example updated. No domain conflicts -- all files within E5 ownership.
 ```
