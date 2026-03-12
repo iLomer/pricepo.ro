@@ -83,10 +83,10 @@ export function Pricing() {
             </ul>
 
             <a
-              href="#lista-asteptare"
+              href="/inregistrare"
               className="mt-8 block rounded-lg border border-secondary-200 py-3 text-center text-sm font-medium text-secondary-700 transition-colors hover:border-secondary-300 hover:text-secondary-900"
             >
-              Inscrie-te gratuit
+              Creeaza cont gratuit
             </a>
           </div>
 

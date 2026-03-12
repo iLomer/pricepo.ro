@@ -57,10 +57,10 @@ export function Hero() {
             style={{ animationDelay: "300ms" }}
           >
             <a
-              href="#lista-asteptare"
+              href="/inregistrare"
               className="inline-flex items-center justify-center rounded-lg bg-secondary-900 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-secondary-800"
             >
-              Inscrie-te pe lista de asteptare
+              Creeaza cont gratuit
             </a>
             <a
               href="#cum-functioneaza"

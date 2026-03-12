@@ -4,7 +4,6 @@ import {
   Features,
   Pricing,
   SocialProof,
-  WaitlistSection,
   Contact,
 } from "@/components/landing";
 
@@ -16,7 +15,6 @@ export default function MarketingPage() {
       <Features />
       <Pricing />
       <SocialProof />
-      <WaitlistSection />
       <Contact />
     </main>
   );

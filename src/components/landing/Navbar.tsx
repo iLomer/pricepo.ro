@@ -48,16 +48,10 @@ export function Navbar() {
         <div className="hidden items-center gap-5 md:flex">
           <Link
             href="/autentificare"
-            className="text-[13px] text-secondary-400 transition-colors hover:text-secondary-900"
+            className="rounded-lg bg-secondary-900 px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-secondary-800"
           >
             Intra in cont
           </Link>
-          <a
-            href="#lista-asteptare"
-            className="rounded-lg bg-secondary-900 px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-secondary-800"
-          >
-            Inscrie-te
-          </a>
         </div>
 
         <button
@@ -91,16 +85,13 @@ export function Navbar() {
               </a>
             ))}
             <hr className="border-secondary-200" />
-            <Link href="/autentificare" className="text-sm text-secondary-600 hover:text-secondary-900">
-              Intra in cont
-            </Link>
-            <a
-              href="#lista-asteptare"
+            <Link
+              href="/autentificare"
               onClick={() => setOpen(false)}
               className="rounded-lg bg-secondary-900 px-4 py-2.5 text-center text-sm font-medium text-white"
             >
-              Inscrie-te
-            </a>
+              Intra in cont
+            </Link>
           </div>
         </div>
       )}
