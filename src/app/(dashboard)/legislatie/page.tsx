@@ -1,10 +1,4 @@
-import Link from "next/link";
-import {
-  getAllUpdates,
-  CATEGORY_LABELS,
-  CATEGORY_COLORS,
-  ENTITY_LABELS,
-} from "@/lib/legislative";
+import { getAllUpdates } from "@/lib/legislative";
 import { isProUser } from "@/lib/stripe/subscription";
 import { ProGate } from "@/components/ProGate";
 import { LegislativeFilterTabs } from "./LegislativeFilterTabs";
