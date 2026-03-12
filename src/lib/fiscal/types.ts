@@ -70,6 +70,16 @@ export interface DeadlineFilter {
   toDate: Date;
 }
 
+/** A legislative source citation */
+export interface LegislativeSource {
+  /** Act name, e.g. "Codul Fiscal (Legea 227/2015)" or "OUG 89/2025" */
+  act: string;
+  /** What this act regulates in context of the topic */
+  relevance: string;
+  /** Monitorul Oficial reference, e.g. "M.Of. nr. 688 din 10.09.2015" */
+  monitorOficial?: string;
+}
+
 /** Norma de venit entry for a CAEN code */
 export interface NormaDeVenitEntry {
   /** CAEN code */

@@ -3,6 +3,8 @@
  * All values reflect 2026 fiscal year (salariul minim brut: 4,050 lei/luna).
  */
 
+import type { LegislativeSource } from "./types";
+
 export interface BibliotecaSection {
   heading: string;
   body: string;
@@ -14,6 +16,8 @@ export interface BibliotecaTopic {
   shortDescription: string;
   category: "contributii" | "impozite" | "declaratii" | "regimuri" | "tva" | "srl";
   content: BibliotecaSection[];
+  /** Legislative sources backing this topic */
+  sources?: LegislativeSource[];
 }
 
 export const CATEGORY_LABELS: Record<string, string> = {
@@ -65,6 +69,10 @@ const TOPICS: BibliotecaTopic[] = [
         body: "CAS se declara prin Declaratia Unica (D212), depusa pana pe 25 mai. Plata se face tot pana pe 25 mai, pentru anul in curs. Daca depui pana pe 15 aprilie, beneficiezi de o reducere de 5% din impozit (nu din CAS).",
       },
     ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza CAS pentru activitati independente — cota de 25%, praguri, baze de calcul", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "HG privind salariul minim brut 2026", relevance: "Stabileste salariul minim de 4,050 lei/luna, baza de calcul pentru pragurile CAS" },
+    ],
   },
   {
     slug: "cass",
@@ -93,6 +101,10 @@ const TOPICS: BibliotecaTopic[] = [
         heading: "Cum se declara?",
         body: "Ca si CAS, se declara prin Declaratia Unica (D212) pana pe 25 mai. CASS se datoreaza pentru anul in curs, pe baza venitului estimat, si se regularizeaza la depunerea declaratiei pentru anul urmator.",
       },
+    ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza CASS pentru activitati independente — cota 10%, plafon minim 6x si maxim 72x salarii minime", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "HG privind salariul minim brut 2026", relevance: "Stabileste salariul minim de 4,050 lei/luna, baza pentru plafoanele CASS" },
     ],
   },
 
@@ -125,6 +137,10 @@ const TOPICS: BibliotecaTopic[] = [
         body: "Impozitul se declara prin Declaratia Unica (D212) si se plateste pana pe 25 mai. Daca depui D212 pana pe 15 aprilie, primesti o reducere de 5% din impozitul datorat. Plata se face in contul unic deschis la Trezorerie sau prin SPV.",
       },
     ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza impozitul pe venit din activitati independente — cota 10%, calcul venit net", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Codul Fiscal — modificari 2024", relevance: "CAS si CASS devin cheltuieli deductibile din baza impozabila incepand cu 2024" },
+    ],
   },
 
   // ── REGIMURI FISCALE ─────────────────────────────────────
@@ -156,6 +172,9 @@ const TOPICS: BibliotecaTopic[] = [
         body: "Normele de venit se publica anual de catre Directia Generala Regionala a Finantelor Publice din judetul tau. Le gasesti pe site-ul ANAF, sectiunea \"Norme de venit\", sau poti intreba la administratia fiscala locala. In estimatorul Prevo, le actualizam automat.",
       },
     ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza stabilirea venitului net pe baza normelor de venit, pe coduri CAEN si judete", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+    ],
   },
   {
     slug: "sistem-real",
@@ -184,6 +203,9 @@ const TOPICS: BibliotecaTopic[] = [
         heading: "Declaratii necesare",
         body: "Depui Declaratia Unica (D212) pana pe 25 mai. Daca esti platitor de TVA, depui si D300 trimestrial. La sistem real, trebuie sa completezi Registrul de incasari si plati si sa pastrezi documentele justificative 5 ani.",
       },
+    ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza calculul venitului net la sistem real — venituri minus cheltuieli deductibile, evidenta contabila in partida simpla", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
     ],
   },
 
@@ -216,6 +238,10 @@ const TOPICS: BibliotecaTopic[] = [
         body: "Capitolul I: venituri estimate pentru anul curent (impozit, CAS, CASS). Capitolul II: venituri realizate in anul precedent (regularizare). Pentru fiecare, alegi sursa de venit, regimul fiscal, si completezi sumele. Daca ai mai multe surse de venit, le declari pe toate in acelasi formular.",
       },
     ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Obligatia depunerii Declaratiei Unice pentru venituri din activitati independente", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Ordin ANAF privind formularul D212", relevance: "Stabileste formularul, structura si instructiunile de completare a Declaratiei Unice" },
+    ],
   },
   {
     slug: "d100",
@@ -244,6 +270,10 @@ const TOPICS: BibliotecaTopic[] = [
         heading: "Cum se depune?",
         body: "Online, prin SPV, similar cu D212. SRL-urile au obligatia de a depune toate declaratiile fiscal in format electronic. Formularul D100 se descarca de pe site-ul ANAF, se completeaza si se incarca in SPV.",
       },
+    ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza declararea si plata impozitului pe veniturile micro-intreprinderilor prin D100", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Ordin ANAF privind formularul D100", relevance: "Stabileste formularul si instructiunile de completare" },
     ],
   },
 
@@ -275,6 +305,10 @@ const TOPICS: BibliotecaTopic[] = [
         body: "Cand SRL-ul distribuie dividende, impozitul de 16% retinut la sursa se declara tot prin D112, in luna in care s-a facut plata dividendelor. Acest lucru este separat de CASS-ul pe dividende pe care asociatul il declara personal prin D212.",
       },
     ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Obligatia declararii lunare a contributiilor sociale si impozitului pe salarii prin D112", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Ordin ANAF privind formularul D112", relevance: "Stabileste formularul, structura si instructiunile de completare" },
+    ],
   },
   {
     slug: "d205",
@@ -303,6 +337,10 @@ const TOPICS: BibliotecaTopic[] = [
         heading: "Sfaturi practice",
         body: "Tine o evidenta clara a tuturor platilor catre persoane fizice pe tot parcursul anului - nu astepta februarie sa reconstruiesti informatiile. D205 trebuie sa fie coerenta cu D112-urile lunare depuse. Discrepantele pot genera notificari de la ANAF.",
       },
+    ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Obligatia informativa a platitorilor de venituri catre persoane fizice — raportare anuala", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Ordin ANAF privind formularul D205", relevance: "Stabileste formularul si instructiunile de completare" },
     ],
   },
   {
@@ -333,6 +371,10 @@ const TOPICS: BibliotecaTopic[] = [
         body: "In T1 ai emis facturi de 100,000 lei + 19,000 lei TVA (colectat). Ai primit facturi de la furnizori de 30,000 lei + 5,700 lei TVA (deductibil). TVA de plata = 19,000 - 5,700 = 13,300 lei. Depui D300 pana pe 25 aprilie si platesti 13,300 lei.",
       },
     ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza decontul de TVA — perioade, calcul, depunere", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Ordin ANAF privind formularul D300", relevance: "Stabileste formularul si instructiunile de completare a decontului de TVA" },
+    ],
   },
   {
     slug: "d394",
@@ -362,6 +404,10 @@ const TOPICS: BibliotecaTopic[] = [
         body: "D394 este laborioasa daca ai multe facturi - necesita detalii per factura. Foloseste un soft de contabilitate care exporta automat D394. Verifica sa nu ai diferente intre totalurile din D394 si cele din D300 - ANAF compara automat si trimite notificari de neconcordanta.",
       },
     ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Obligatia declararii informatiilor privind livrarile si achizitiile pe teritoriul national", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Ordin ANAF privind formularul D394", relevance: "Stabileste formularul si instructiunile de completare" },
+    ],
   },
   {
     slug: "d390",
@@ -390,6 +436,9 @@ const TOPICS: BibliotecaTopic[] = [
         heading: "Ce completezi?",
         body: "Pentru fiecare partener din UE: codul de TVA al partenerului, tara, tipul operatiunii (livrare de bunuri, prestare de servicii, achizitie), si valoarea totala a tranzactiilor in perioada de raportare. Se depune exclusiv online, prin SPV.",
       },
+    ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza declaratia recapitulativa privind operatiunile intracomunitare", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
     ],
   },
 
@@ -422,6 +471,9 @@ const TOPICS: BibliotecaTopic[] = [
         body: "Chiar daca esti pe norma de venit pentru impozit, daca depasesti plafonul de 395,000 lei cifra de afaceri, devii platitor de TVA. Norma de venit afecteaza doar calculul impozitului pe venit, nu si obligatia de TVA.",
       },
     ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015) — Titlul VII", relevance: "Reglementeaza TVA — cote, plafon de scutire, inregistrare, decontare", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+    ],
   },
 
   // ── SRL ──────────────────────────────────────────────────
@@ -453,6 +505,9 @@ const TOPICS: BibliotecaTopic[] = [
         body: "Daca depasesti plafonul de 100,000 EUR in cursul anului, treci la impozit pe profit (16%) incepand cu trimestrul in care ai depasit. Nu mai revii la micro in acel an. In anul urmator, daca indeplinesti din nou conditiile, poti reveni la regimul micro.",
       },
     ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015) — Titlul III", relevance: "Reglementeaza impozitul pe veniturile micro-intreprinderilor — conditii, cota, plafon", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+    ],
   },
   {
     slug: "dividende-srl",
@@ -482,6 +537,10 @@ const TOPICS: BibliotecaTopic[] = [
         body: "Dividendele se pot distribui dupa aprobarea situatiilor financiare anuale (de regula dupa depunerea bilantului). Poti distribui si dividende interimare (trimestrial), dar exista riscul ca la final de an profitul real sa fie mai mic decat dividendele deja distribuite, caz in care trebuie sa returnezi diferenta.",
       },
     ],
+    sources: [
+      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza impozitul pe dividende (16%) si CASS pe dividende cu praguri pe salarii minime", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Legea 31/1990 privind societatile", relevance: "Reglementeaza distribuirea dividendelor, decizia AGA/asociatului unic", monitorOficial: "M.Of. nr. 126-127 din 17.11.1990" },
+    ],
   },
 
   // ── ALTE CONCEPTE ────────────────────────────────────────
@@ -508,6 +567,9 @@ const TOPICS: BibliotecaTopic[] = [
         heading: "Poti schimba codul CAEN?",
         body: "Da, poti adauga sau modifica coduri CAEN prin depunerea unei cereri la Registrul Comertului (pentru SRL) sau la ANAF (pentru PFA). Daca iti schimbi activitatea principala, trebuie sa actualizezi si codul CAEN principal. Modificarea poate afecta norma de venit si alte obligatii fiscale.",
       },
+    ],
+    sources: [
+      { act: "Ordinul INS 337/2007", relevance: "Stabileste clasificarea CAEN Rev. 2 a activitatilor din economia nationala" },
     ],
   },
   {
@@ -537,6 +599,9 @@ const TOPICS: BibliotecaTopic[] = [
         heading: "Sfaturi practice",
         body: "Salveaza-ti credentialele in siguranta. Activeaza notificarile pe email ca sa nu ratezi termene. Verifica periodic \"Situatia obligatiilor de plata\" sa te asiguri ca nu ai datorii necunoscute. Daca ai probleme tehnice, suna la Call Center ANAF: 031.403.91.60.",
       },
+    ],
+    sources: [
+      { act: "Ordin ANAF privind SPV", relevance: "Reglementeaza functionarea Spatiului Privat Virtual — inregistrare, depunere declaratii, comunicare electronica" },
     ],
   },
 ];

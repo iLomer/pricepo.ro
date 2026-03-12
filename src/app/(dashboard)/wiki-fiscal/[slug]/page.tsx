@@ -92,6 +92,32 @@ export default async function TopicPage({ params }: TopicPageProps) {
         ))}
       </div>
 
+      {/* Legislative sources */}
+      {topic.sources && topic.sources.length > 0 && (
+        <div className="mt-6 rounded-xl border border-secondary-200 bg-secondary-50 p-5">
+          <h3 className="mb-3 text-sm font-semibold text-secondary-600">
+            Baza legala
+          </h3>
+          <ul className="space-y-2.5">
+            {topic.sources.map((source, i) => (
+              <li key={i} className="text-sm">
+                <span className="font-medium text-foreground">{source.act}</span>
+                <p className="mt-0.5 text-secondary-500">{source.relevance}</p>
+                {source.monitorOficial && (
+                  <p className="mt-0.5 text-xs text-secondary-400">
+                    Publicat in {source.monitorOficial}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-xs text-secondary-400 border-t border-secondary-200 pt-3">
+            Informatiile sunt actualizate pentru anul fiscal 2026. Textul integral
+            al actelor normative este disponibil in Monitorul Oficial al Romaniei.
+          </p>
+        </div>
+      )}
+
       {/* Bottom back link */}
       <div className="mt-6">
         <Link

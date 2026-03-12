@@ -7,6 +7,11 @@ import { getNormaDeVenitEntry } from "@/lib/fiscal/norma-venit";
 import { getAllSRLDeadlines } from "@/lib/fiscal/srl/srl-deadlines";
 import { SistemRealEstimatorCard } from "@/components/estimator/SistemRealEstimatorCard";
 import { DeadlineChecklist } from "@/components/calendar/DeadlineChecklist";
+import {
+  getUpdatesByEntity,
+  CATEGORY_LABELS as LEG_CATEGORY_LABELS,
+  CATEGORY_COLORS as LEG_CATEGORY_COLORS,
+} from "@/lib/legislative";
 import type { FiscalRegime, TVAStatus, EntityType } from "@/types";
 import type { FiscalDeadline } from "@/lib/fiscal/types";
 
@@ -263,6 +268,9 @@ export default async function DashboardPage() {
         </div>
       )}
 
+      {/* Recent legislative changes */}
+      <RecentLegislation entityType={entityType} />
+
       {/* Quick actions */}
       <div className="mt-6 grid gap-3 sm:grid-cols-3">
         {isPFA ? (
@@ -374,6 +382,58 @@ function NextDeadlineContent({ deadline }: { deadline: FiscalDeadline }) {
             {category.label}
           </span>
         )}
+      </div>
+    </div>
+  );
+}
+
+function RecentLegislation({ entityType }: { entityType: EntityType }) {
+  const entity = entityType === "srl" ? "srl" : "pfa";
+  const updates = getUpdatesByEntity(entity).slice(0, 3);
+
+  if (updates.length === 0) return null;
+
+  return (
+    <div className="mt-6 rounded-xl border border-secondary-200 bg-background p-5">
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="text-sm font-medium text-secondary-500">
+          Ce s-a schimbat recent
+        </h2>
+        <Link
+          href="/legislatie"
+          className="text-xs font-medium text-primary-600 hover:text-primary-700"
+        >
+          Vezi toate &rarr;
+        </Link>
+      </div>
+      <div className="space-y-3">
+        {updates.map((update) => (
+          <Link
+            key={update.slug}
+            href={`/legislatie/${update.slug}`}
+            className="group flex items-start gap-3 rounded-lg p-2 -mx-2 transition-colors hover:bg-secondary-50"
+          >
+            <span
+              className={`mt-0.5 shrink-0 rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase ${
+                LEG_CATEGORY_COLORS[update.category]
+              }`}
+            >
+              {LEG_CATEGORY_LABELS[update.category]}
+            </span>
+            <div className="min-w-0">
+              <p className="text-sm font-medium text-foreground group-hover:text-primary-700 transition-colors line-clamp-1">
+                {update.title}
+              </p>
+              <p className="text-xs text-secondary-400">
+                {new Date(update.publishedDate).toLocaleDateString("ro-RO", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </p>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

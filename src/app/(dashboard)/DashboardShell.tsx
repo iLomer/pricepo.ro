@@ -65,6 +65,11 @@ const icons = {
       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
     </svg>
   ),
+  scale: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+      <path d="M16 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M2 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /><path d="M7 21h10" /><path d="M12 3v18" /><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
+    </svg>
+  ),
 };
 
 /** PFA users: PFA-specific tools */
@@ -74,6 +79,7 @@ const PFA_NAV_ITEMS: NavItem[] = [
   { label: "Estimator taxe", href: "/estimator", icon: icons.calculator },
   { label: "Ghid D212", href: "/d212", icon: icons.document },
   { label: "Wiki fiscal", href: "/wiki-fiscal", icon: icons.book },
+  { label: "Legislatie", href: "/legislatie", icon: icons.scale },
   { label: "Alerte", href: "/alerte", icon: icons.bell },
 ];
 
@@ -87,6 +93,7 @@ const SRL_NAV_ITEMS: NavItem[] = [
   { label: "Cash flow", href: "/srl/cash-flow", icon: icons.chart },
   { label: "Decizie asociat", href: "/srl/decizie-asociat", icon: icons.document },
   { label: "Wiki fiscal", href: "/wiki-fiscal", icon: icons.book },
+  { label: "Legislatie", href: "/legislatie", icon: icons.scale },
   { label: "Alerte", href: "/alerte", icon: icons.bell },
 ];
 
