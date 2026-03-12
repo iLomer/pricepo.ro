@@ -15,12 +15,6 @@ export default async function CashFlowPage() {
     redirect("/autentificare");
   }
 
-  const { data: profile } = await supabase
-    .from("fiscal_profiles")
-    .select("regime")
-    .eq("id", user.id)
-    .single();
-
   return (
     <div className="pb-20 lg:pb-0">
       <div className="mb-6">

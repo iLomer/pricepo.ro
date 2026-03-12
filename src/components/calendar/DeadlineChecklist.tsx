@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import type { FiscalDeadline } from "@/lib/fiscal/types";
 
 const CATEGORY_LABELS: Record<string, { label: string; color: string }> = {
   declaratie: { label: "Declaratie", color: "bg-primary-50 text-primary-700" },

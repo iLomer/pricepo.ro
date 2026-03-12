@@ -27,14 +27,14 @@ export function FeedbackBubble() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [open]);
 
-  // Reset form when reopening
-  useEffect(() => {
-    if (open && status === "success") {
-      setStatus("idle");
-      setMessage("");
-      setEmail("");
-    }
-  }, [open, status]);
+  // Reset form when reopening - use ref to track previous open state
+  const prevOpenRef = useRef(false);
+  if (open && !prevOpenRef.current && status === "success") {
+    setStatus("idle");
+    setMessage("");
+    setEmail("");
+  }
+  prevOpenRef.current = open;
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
