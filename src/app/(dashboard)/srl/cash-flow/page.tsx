@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { FiscalCashFlow } from "@/components/srl/FiscalCashFlow";
-import type { FiscalRegime } from "@/types";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +21,6 @@ export default async function CashFlowPage() {
     .eq("id", user.id)
     .single();
 
-  const regime = profile?.regime as FiscalRegime | undefined;
   return (
     <div className="pb-20 lg:pb-0">
       <div className="mb-6">

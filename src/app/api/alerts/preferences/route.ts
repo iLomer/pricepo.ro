@@ -46,10 +46,16 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "Neautorizat" }, { status: 401 });
   }
 
-  const body = await request.json() as {
+  let body: {
     email_alerts_enabled?: boolean;
     alert_days_before?: number[];
   };
+
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Request body invalid" }, { status: 400 });
+  }
 
   // Validate input
   if (

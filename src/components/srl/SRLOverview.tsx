@@ -213,7 +213,7 @@ export function SRLOverview() {
           <div className="rounded-xl border border-secondary-200 bg-background p-5">
             <h2 className="mb-2 text-lg font-semibold text-foreground">Fluxul banilor</h2>
             <p className="mb-4 text-xs text-secondary-400">
-              De la venituri la banii din buzunar — tot traseul fiscal
+              De la venituri la banii din buzunar - tot traseul fiscal
             </p>
 
             <FlowRow label="Venituri anuale (CA)" amount={revenue} type="income" />
@@ -246,7 +246,7 @@ export function SRLOverview() {
 
             {calculations.cassResult.cassApplies ? (
               <FlowRow
-                label={`CASS dividende (10% — depasit pragul de ${formatLei(calculations.cassResult.threshold6x)} lei)`}
+                label={`CASS dividende (10% - depasit pragul de ${formatLei(calculations.cassResult.threshold6x)} lei)`}
                 amount={calculations.cassResult.cassAmount}
                 type="tax"
               />
@@ -322,7 +322,7 @@ export function SRLOverview() {
                       Impozit: <span className="font-medium text-error-600">{formatLei(quarterTax)} lei</span>
                     </p>
                     <p className="mt-1 text-xs text-secondary-400">
-                      D100 — termen: {["25 apr", "25 iul", "25 oct", "25 ian 2027"][i]}
+                      D100 - termen: {["25 apr", "25 iul", "25 oct", "25 ian 2027"][i]}
                     </p>
                   </div>
                 );

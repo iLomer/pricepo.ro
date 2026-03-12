@@ -24,7 +24,7 @@ const YEAR = FISCAL_CONSTANTS_2026.FISCAL_YEAR;
  */
 export function getAllPFADeadlines(): FiscalDeadline[] {
   return [
-    // ─── D212 — Declaratia Unica ───
+    // ─── D212 - Declaratia Unica ───
 
     // Early filing with bonus
     {
@@ -56,16 +56,16 @@ export function getAllPFADeadlines(): FiscalDeadline[] {
       category: "declaratie",
     },
 
-    // ─── TVA D300 — Monthly deadlines (for monthly TVA filers) ───
+    // ─── TVA D300 - Monthly deadlines (for monthly TVA filers) ───
     ...generateMonthlyTVADeadlines(),
 
-    // ─── TVA D300 — Quarterly deadlines ───
+    // ─── TVA D300 - Quarterly deadlines ───
     ...generateQuarterlyTVADeadlines(),
 
-    // ─── D394 — Declaratia informativa (TVA payers) ───
+    // ─── D394 - Declaratia informativa (TVA payers) ───
     ...generateD394Deadlines(),
 
-    // ─── D390 — Recapitulativa intracomunitara ───
+    // ─── D390 - Recapitulativa intracomunitara ───
     {
       id: "d390-q1",
       name: "Declaratia recapitulativa D390 - T1",

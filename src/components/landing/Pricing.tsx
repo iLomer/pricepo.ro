@@ -43,7 +43,7 @@ export function Pricing() {
           <p className="mt-4 text-[15px] leading-relaxed text-secondary-500">
             Toate functiile incluse. Fara limita de timp, fara card bancar.
             <br />
-            Vrem sa construim ceva util &mdash; si avem nevoie de feedback-ul tau.
+            Vrem sa construim ceva util - si avem nevoie de feedback-ul tau.
           </p>
         </div>
 

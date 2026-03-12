@@ -98,7 +98,7 @@ export function FeedbackBubble() {
                 Trimite-ne feedback
               </p>
               <p className="mt-1 text-xs text-secondary-400">
-                Bug, sugestie sau intrebare — orice ne ajuta.
+                Bug, sugestie sau intrebare - orice ne ajuta.
               </p>
 
               <textarea

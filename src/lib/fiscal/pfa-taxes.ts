@@ -4,8 +4,8 @@
  * All monetary values are in lei, rounded to 2 decimals.
  *
  * 2026 rates (OUG 8/2026, OUG 89/2025):
- * - CAS: 25% — 0 below 12x, 25% of 12x for 12-24x, 25% of 24x above 24x
- * - CASS: 10% — 10% of 6x (floor) below 6x, 10% of actual 6-72x, 10% of 72x (cap)
+ * - CAS: 25% - 0 below 12x, 25% of 12x for 12-24x, 25% of 24x above 24x
+ * - CASS: 10% - 10% of 6x (floor) below 6x, 10% of actual 6-72x, 10% of 72x (cap)
  * - Income tax: 10% of taxable base (after CAS + CASS deduction)
  * - Bonus: 3% discount on income tax if D212 filed + paid by April 15
  */
@@ -54,7 +54,7 @@ export function calculateCAS(
  *
  * CASS 2026 rules:
  * - Below 6x (24,300 lei): 10% of 6x = 2,430 lei (minimum floor)
- *   Exception: 0 if also employed and paying CASS through salary — we can't know this,
+ *   Exception: 0 if also employed and paying CASS through salary - we can't know this,
  *   so we always show the minimum floor with a note.
  * - 6x to 72x (24,300 - 291,600 lei): 10% of actual taxable base
  * - Above 72x (291,600 lei): 10% of 72x = 29,160 lei (cap)

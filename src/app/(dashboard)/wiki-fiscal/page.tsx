@@ -14,7 +14,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   srl: "bg-cyan-100 text-cyan-700",
 };
 
-export default function BibliotecaPage() {
+export default function WikiFiscalPage() {
   const topics = getAllTopics();
 
   // Group topics by category, in display order
@@ -28,10 +28,10 @@ export default function BibliotecaPage() {
     <div className="pb-20 lg:pb-0">
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-foreground">
-          Biblioteca fiscala
+          Wiki fiscal
         </h1>
         <p className="mt-1 text-sm text-secondary-500">
-          Termeni fiscali explicati pe intelesul tuturor — fara jargon, cu
+          Termeni fiscali explicati pe intelesul tuturor - fara jargon, cu
           exemple practice si valori actualizate 2026.
         </p>
       </div>
@@ -54,7 +54,7 @@ export default function BibliotecaPage() {
             {group.topics.map((topic) => (
               <Link
                 key={topic.slug}
-                href={`/biblioteca/${topic.slug}`}
+                href={`/wiki-fiscal/${topic.slug}`}
                 className="group rounded-xl border border-secondary-200 bg-background p-5 transition-all hover:border-primary-300 hover:shadow-sm"
               >
                 <div className="mb-2 flex items-center gap-2">

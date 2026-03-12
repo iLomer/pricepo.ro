@@ -39,7 +39,7 @@ export function Contact() {
                 </p>
                 <p className="mt-1 text-sm leading-relaxed text-secondary-500">
                   Apasa pe bula din coltul din dreapta-jos al ecranului.
-                  Bug, sugestie, intrebare &mdash; orice ne ajuta sa facem Prevo mai bun.
+                  Bug, sugestie, intrebare - orice ne ajuta sa facem Prevo mai bun.
                 </p>
               </div>
             </div>

@@ -27,7 +27,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
     <div className="pb-20 lg:pb-0">
       {/* Back link */}
       <Link
-        href="/biblioteca"
+        href="/wiki-fiscal"
         className="mb-4 inline-flex items-center gap-1.5 text-sm text-secondary-500 hover:text-primary-600 transition-colors"
       >
         <svg
@@ -42,7 +42,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
         >
           <polyline points="15 18 9 12 15 6" />
         </svg>
-        Inapoi la Biblioteca fiscala
+        Inapoi la Wiki fiscal
       </Link>
 
       {/* Header */}
@@ -95,7 +95,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
       {/* Bottom back link */}
       <div className="mt-6">
         <Link
-          href="/biblioteca"
+          href="/wiki-fiscal"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
         >
           <svg

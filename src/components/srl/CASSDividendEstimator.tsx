@@ -189,7 +189,7 @@ export function CASSDividendEstimator() {
               <li>
                 CASS pe dividende este in trepte: baza de calcul este 6, 12 sau 24 salarii minime,
                 in functie de totalul dividendelor. Plafonul maxim este de 24 salarii minime
-                ({formatLei(result.cassCap)} lei in 2026) — CASS maxim: {formatLei(result.cassCap * result.cassRate)} lei.
+                ({formatLei(result.cassCap)} lei in 2026) - CASS maxim: {formatLei(result.cassCap * result.cassRate)} lei.
               </li>
               <li>
                 CASS pe dividende se declara de catre asociat (nu de SRL) prin

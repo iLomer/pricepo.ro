@@ -5,20 +5,19 @@
  * Pure functions -- no side effects, no Supabase calls.
  *
  * Key deadlines:
- * - D100 (quarterly micro tax declaration + payment) — 25th of month after quarter
- * - D205 (informativa dividende/dobanzi) — end of February
- * - D300 (TVA decount) — quarterly for platitori TVA
- * - D394 (declaratie informativa) — for TVA payers, 30th of following month
- * - D390 (recapitulativa intracomunitara) — for TVA payers with EU transactions
- * - Situatii financiare anuale (bilant) — June 2, 2026 (150 zile de la incheierea exercitiului)
- * - CASS pe dividende (D212 asociat) — May 25
- * - D112 (contributii salariale) — monthly, 25th (only if company has employees)
+ * - D100 (quarterly micro tax declaration + payment) - 25th of month after quarter
+ * - D205 (informativa dividende/dobanzi) - end of February
+ * - D300 (TVA decount) - quarterly for platitori TVA
+ * - D394 (declaratie informativa) - for TVA payers, 30th of following month
+ * - D390 (recapitulativa intracomunitara) - for TVA payers with EU transactions
+ * - Situatii financiare anuale (bilant) - June 2, 2026 (150 zile de la incheierea exercitiului)
+ * - CASS pe dividende (D212 asociat) - May 25
+ * - D112 (contributii salariale) - monthly, 25th (only if company has employees)
  *
  * Dividend tax rate from 2026: 16% (was 10% in 2025, 8% in 2023-2024)
  */
 
 import type { FiscalDeadline } from "../types";
-import type { SRLMicroRegime } from "./types";
 import { SRL_CONSTANTS_2026 } from "./constants";
 import { calculateQuarterlyMicroTax } from "./micro-tax";
 
@@ -88,7 +87,7 @@ export function getAllSRLDeadlines(): FiscalDeadline[] {
       category: "declaratie",
     },
 
-    // ─── D100 quarterly — micro tax declaration + payment ───
+    // ─── D100 quarterly - micro tax declaration + payment ───
 
     {
       id: "srl-d100-q1",
@@ -143,7 +142,7 @@ export function getAllSRLDeadlines(): FiscalDeadline[] {
       category: "declaratie",
     },
 
-    // ─── D112 monthly — employee contributions (if company has employees) ───
+    // ─── D112 monthly - employee contributions (if company has employees) ───
     ...generateD112Deadlines(),
 
     // ─── TVA D300 quarterly (for platitori TVA) ───

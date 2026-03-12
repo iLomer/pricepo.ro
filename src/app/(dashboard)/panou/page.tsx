@@ -6,6 +6,7 @@ import { filterDeadlines, filterDeadlinesGeneric } from "@/lib/fiscal/pfa-deadli
 import { getNormaDeVenitEntry } from "@/lib/fiscal/norma-venit";
 import { getAllSRLDeadlines } from "@/lib/fiscal/srl/srl-deadlines";
 import { SistemRealEstimatorCard } from "@/components/estimator/SistemRealEstimatorCard";
+import { DeadlineChecklist } from "@/components/calendar/DeadlineChecklist";
 import type { FiscalRegime, TVAStatus, EntityType } from "@/types";
 import type { FiscalDeadline } from "@/lib/fiscal/types";
 
@@ -22,13 +23,6 @@ function formatLei(value: number): string {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(value);
-}
-
-function formatDate(date: Date): string {
-  return date.toLocaleDateString("ro-RO", {
-    day: "numeric",
-    month: "long",
-  });
 }
 
 function daysUntil(date: Date): number {
@@ -74,13 +68,13 @@ export default async function DashboardPage() {
   const caenCode = profile.caen_code as string;
   const entityType = profile.entity_type as EntityType;
 
-  // Compute tax estimate (PFA only — SRL needs revenue input)
+  // Compute tax estimate (PFA only - SRL needs revenue input)
   const isPFA = entityType === "pfa";
   const normaEntry = isPFA && regime === "norma_venit" ? getNormaDeVenitEntry(caenCode) : null;
   const incomeBase = normaEntry ? normaEntry.normaValue : 0;
   const taxBreakdown = isPFA && incomeBase > 0 ? calculateTotalTax(incomeBase, regime, 0, caenCode) : null;
 
-  // Get all deadlines for the rest of the year — entity-type aware
+  // Get all deadlines for the rest of the year - entity-type aware
   const now = new Date();
   const yearEnd = new Date(2026, 11, 31);
   const dateFilter = { regime, tvaStatus, fromDate: now, toDate: yearEnd };
@@ -254,27 +248,18 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      {/* Full year deadlines timeline */}
+      {/* Full year deadlines checklist */}
       {allDeadlines.length > 0 && (
         <div className="mt-6">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-base font-semibold text-foreground">
-              Toate termenele tale din 2026
-            </h2>
-            <span className="text-xs text-secondary-400">
-              {allDeadlines.length} {allDeadlines.length === 1 ? "termen" : "termene"} ramase
-            </span>
-          </div>
-
-          <div className="rounded-xl border border-secondary-200 bg-background">
-            {allDeadlines.map((deadline, index) => (
-              <DeadlineRow
-                key={deadline.id}
-                deadline={deadline}
-                isLast={index === allDeadlines.length - 1}
-              />
-            ))}
-          </div>
+          <DeadlineChecklist
+            deadlines={allDeadlines.map((d) => ({
+              id: d.id,
+              name: d.name,
+              date: d.date.toISOString(),
+              category: d.category,
+              description: d.description,
+            }))}
+          />
         </div>
       )}
 
@@ -390,53 +375,6 @@ function NextDeadlineContent({ deadline }: { deadline: FiscalDeadline }) {
           </span>
         )}
       </div>
-    </div>
-  );
-}
-
-function DeadlineRow({
-  deadline,
-  isLast,
-}: {
-  deadline: FiscalDeadline;
-  isLast: boolean;
-}) {
-  const days = daysUntil(deadline.date);
-  const urgency = getUrgencyStyle(days);
-  const category = CATEGORY_LABELS[deadline.category];
-
-  return (
-    <div
-      className={`flex items-center gap-4 px-4 py-3 ${
-        !isLast ? "border-b border-secondary-100" : ""
-      }`}
-    >
-      {/* Date column */}
-      <div className="w-16 shrink-0 text-center">
-        <p className="text-sm font-bold tabular-nums text-foreground">
-          {deadline.date.getDate()}
-        </p>
-        <p className="text-xs text-secondary-400">
-          {deadline.date.toLocaleDateString("ro-RO", { month: "short" })}
-        </p>
-      </div>
-
-      {/* Name + category */}
-      <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium text-foreground">
-          {deadline.name}
-        </p>
-        {category && (
-          <span className={`mt-0.5 inline-block rounded px-1.5 py-0.5 text-[10px] font-medium ${category.color}`}>
-            {category.label}
-          </span>
-        )}
-      </div>
-
-      {/* Days badge */}
-      <span className={`shrink-0 rounded-md px-2 py-0.5 text-xs font-medium tabular-nums ${urgency.badge}`}>
-        {days < 0 ? "Trecut" : days === 0 ? "Astazi" : `${days}z`}
-      </span>
     </div>
   );
 }

@@ -73,7 +73,7 @@ const PFA_NAV_ITEMS: NavItem[] = [
   { label: "Calendar fiscal", href: "/calendar", icon: icons.calendar },
   { label: "Estimator taxe", href: "/estimator", icon: icons.calculator },
   { label: "Ghid D212", href: "/d212", icon: icons.document },
-  { label: "Biblioteca", href: "/biblioteca", icon: icons.book },
+  { label: "Wiki fiscal", href: "/wiki-fiscal", icon: icons.book },
   { label: "Alerte", href: "/alerte", icon: icons.bell },
 ];
 
@@ -86,7 +86,7 @@ const SRL_NAV_ITEMS: NavItem[] = [
   { label: "CASS dividende", href: "/srl/cass-dividende", icon: icons.shield },
   { label: "Cash flow", href: "/srl/cash-flow", icon: icons.chart },
   { label: "Decizie asociat", href: "/srl/decizie-asociat", icon: icons.document },
-  { label: "Biblioteca", href: "/biblioteca", icon: icons.book },
+  { label: "Wiki fiscal", href: "/wiki-fiscal", icon: icons.book },
   { label: "Alerte", href: "/alerte", icon: icons.bell },
 ];
 
@@ -241,7 +241,7 @@ export function DashboardShell({ entityType, regime, children }: DashboardShellP
         )}
 
         {/* Main content */}
-        <main className="min-h-[calc(100vh-57px)] flex-1 p-4 lg:p-6">
+        <main className="min-h-[calc(100vh-57px)] min-w-0 flex-1 overflow-x-hidden p-4 lg:p-6">
           {children}
         </main>
       </div>

@@ -1,5 +1,5 @@
 /**
- * Biblioteca fiscala — static content for fiscal education topics.
+ * Wiki fiscal - static content for fiscal education topics.
  * All values reflect 2026 fiscal year (salariul minim brut: 4,050 lei/luna).
  */
 
@@ -41,7 +41,7 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "cas",
     title: "CAS (Contributia de Asigurari Sociale)",
     shortDescription:
-      "Contributia pentru pensie — 25% din venitul ales, cu praguri de 12 si 24 de salarii minime.",
+      "Contributia pentru pensie - 25% din venitul ales, cu praguri de 12 si 24 de salarii minime.",
     category: "contributii",
     content: [
       {
@@ -54,7 +54,7 @@ const TOPICS: BibliotecaTopic[] = [
       },
       {
         heading: "Cand esti obligat sa platesti?",
-        body: "Esti obligat sa platesti CAS daca venitul net anual estimat (sau realizat) depaseste pragul de 12 salarii minime brute, adica 48,600 lei in 2026. Sub acest prag, CAS este optionala — dar daca nu o platesti, nu ti se calculeaza stagiu de cotizare la pensie.",
+        body: "Esti obligat sa platesti CAS daca venitul net anual estimat (sau realizat) depaseste pragul de 12 salarii minime brute, adica 48,600 lei in 2026. Sub acest prag, CAS este optionala - dar daca nu o platesti, nu ti se calculeaza stagiu de cotizare la pensie.",
       },
       {
         heading: "Norma de venit vs. sistem real",
@@ -70,7 +70,7 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "cass",
     title: "CASS (Contributia de Asigurari Sociale de Sanatate)",
     shortDescription:
-      "Contributia pentru sanatate — 10%, cu plafon minim de 6 salarii si maxim de 72 salarii minime.",
+      "Contributia pentru sanatate - 10%, cu plafon minim de 6 salarii si maxim de 72 salarii minime.",
     category: "contributii",
     content: [
       {
@@ -82,12 +82,12 @@ const TOPICS: BibliotecaTopic[] = [
         body: "Cota este 10%, aplicata proportional la venitul net anual realizat din activitati independente. Exista insa un plafon minim: 6 salarii minime brute (6 x 4,050 = 24,300 lei, deci minim 2,430 lei CASS pe an). Plafonul maxim este 72 salarii minime brute pe an (72 x 4,050 = 291,600 lei), deci maximum platesti 10% x 291,600 = 29,160 lei pe an, indiferent cat de mare ti-e venitul.",
       },
       {
-        heading: "Calcul proportional — exemplu",
+        heading: "Calcul proportional - exemplu",
         body: "Daca ai venit net de 100,000 lei: CASS = 10% x 100,000 = 10,000 lei. Daca ai venit net de 15,000 lei (sub 6 salarii minime): tot platesti minim 2,430 lei. Daca ai venit net de 500,000 lei: platesti maxim 29,160 lei (plafonul de 72 salarii minime).",
       },
       {
         heading: "Cine este scutit?",
-        body: "Sunt scutiti de CASS: persoanele care au deja calitatea de asigurat prin contractul de munca (daca esti si angajat, angajatorul iti plateste deja CASS pe salariu — dar doar daca salariul depaseste pragul). De asemenea, anumite categorii de persoane cu handicap sau veterani pot fi scutite.",
+        body: "Sunt scutiti de CASS: persoanele care au deja calitatea de asigurat prin contractul de munca (daca esti si angajat, angajatorul iti plateste deja CASS pe salariu - dar doar daca salariul depaseste pragul). De asemenea, anumite categorii de persoane cu handicap sau veterani pot fi scutite.",
       },
       {
         heading: "Cum se declara?",
@@ -101,7 +101,7 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "impozit-venit-pfa",
     title: "Impozit pe venit PFA",
     shortDescription:
-      "10% din venitul net, dupa deducerea CAS si CASS — difera intre norma si sistem real.",
+      "10% din venitul net, dupa deducerea CAS si CASS - difera intre norma si sistem real.",
     category: "impozite",
     content: [
       {
@@ -132,20 +132,20 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "norma-de-venit",
     title: "Norma de venit",
     shortDescription:
-      "Venit fix stabilit de ANAF per cod CAEN — nu conteaza cat incasezi real, taxele sunt fixe.",
+      "Venit fix stabilit de ANAF per cod CAEN - nu conteaza cat incasezi real, taxele sunt fixe.",
     category: "regimuri",
     content: [
       {
         heading: "Ce este norma de venit?",
-        body: "Norma de venit este un sistem simplificat de impozitare in care ANAF stabileste un venit anual fix pentru fiecare cod CAEN si judet. Nu conteaza cat incasezi real — taxele se calculeaza pe baza acestei norme. Daca incasezi 200,000 lei dar norma ta este 40,000 lei, platesti taxe pe 40,000 lei.",
+        body: "Norma de venit este un sistem simplificat de impozitare in care ANAF stabileste un venit anual fix pentru fiecare cod CAEN si judet. Nu conteaza cat incasezi real - taxele se calculeaza pe baza acestei norme. Daca incasezi 200,000 lei dar norma ta este 40,000 lei, platesti taxe pe 40,000 lei.",
       },
       {
         heading: "Cine poate folosi norma de venit?",
-        body: "Doar PFA-urile care au codul CAEN inclus in lista normelor publicate de directia de finante a judetului. Nu toate activitatile au norma de venit disponibila. Normele variaza si intre judete — acelasi CAEN poate avea norme diferite in Cluj fata de Brasov.",
+        body: "Doar PFA-urile care au codul CAEN inclus in lista normelor publicate de directia de finante a judetului. Nu toate activitatile au norma de venit disponibila. Normele variaza si intre judete - acelasi CAEN poate avea norme diferite in Cluj fata de Brasov.",
       },
       {
         heading: "Avantaje",
-        body: "Nu ai nevoie de evidenta contabila complexa. Nu trebuie sa pastrezi facturi de cheltuieli. Stii din ianuarie cat vei plati in taxe. E ideal daca ai venituri mult peste norma — platesti taxe pe un venit mai mic decat cel real.",
+        body: "Nu ai nevoie de evidenta contabila complexa. Nu trebuie sa pastrezi facturi de cheltuieli. Stii din ianuarie cat vei plati in taxe. E ideal daca ai venituri mult peste norma - platesti taxe pe un venit mai mic decat cel real.",
       },
       {
         heading: "Dezavantaje",
@@ -161,7 +161,7 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "sistem-real",
     title: "Sistem real",
     shortDescription:
-      "Venituri reale minus cheltuieli reale — mai complex, dar poate fi mai ieftin daca ai cheltuieli mari.",
+      "Venituri reale minus cheltuieli reale - mai complex, dar poate fi mai ieftin daca ai cheltuieli mari.",
     category: "regimuri",
     content: [
       {
@@ -174,7 +174,7 @@ const TOPICS: BibliotecaTopic[] = [
       },
       {
         heading: "Avantaje fata de norma",
-        body: "Daca ai cheltuieli mari (echipamente, chirie, angajati prin colaborare), venitul net scade si platesti mai putine taxe. Ai flexibilitate totala — poti optimiza legal cheltuielile. Ideal pentru freelanceri cu costuri operationale semnificative.",
+        body: "Daca ai cheltuieli mari (echipamente, chirie, angajati prin colaborare), venitul net scade si platesti mai putine taxe. Ai flexibilitate totala - poti optimiza legal cheltuielile. Ideal pentru freelanceri cu costuri operationale semnificative.",
       },
       {
         heading: "Dezavantaje",
@@ -192,12 +192,12 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "declaratia-unica-d212",
     title: "Declaratia Unica (D212)",
     shortDescription:
-      "Declaratia anuala pentru PFA — acopera impozit, CAS si CASS intr-un singur formular.",
+      "Declaratia anuala pentru PFA - acopera impozit, CAS si CASS intr-un singur formular.",
     category: "declaratii",
     content: [
       {
         heading: "Ce este D212?",
-        body: "Declaratia Unica (formularul 212) este documentul prin care PFA-urile declara si platesc impozitul pe venit, CAS si CASS. Un singur formular inlocuieste mai multe declaratii separate — de aici numele \"unica\".",
+        body: "Declaratia Unica (formularul 212) este documentul prin care PFA-urile declara si platesc impozitul pe venit, CAS si CASS. Un singur formular inlocuieste mai multe declaratii separate - de aici numele \"unica\".",
       },
       {
         heading: "Cine depune D212?",
@@ -205,7 +205,7 @@ const TOPICS: BibliotecaTopic[] = [
       },
       {
         heading: "Termenele importante",
-        body: "Termenul limita este 25 mai (pentru anul in curs — estimare, si pentru anul precedent — regularizare). Daca depui pana pe 15 aprilie, primesti o reducere de 5% din impozitul pe venit datorat. Aceasta reducere nu se aplica la CAS si CASS, doar la impozit.",
+        body: "Termenul limita este 25 mai (pentru anul in curs - estimare, si pentru anul precedent - regularizare). Daca depui pana pe 15 aprilie, primesti o reducere de 5% din impozitul pe venit datorat. Aceasta reducere nu se aplica la CAS si CASS, doar la impozit.",
       },
       {
         heading: "Cum se depune?",
@@ -221,7 +221,7 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "d100",
     title: "D100 (Declaratia privind obligatiile de plata)",
     shortDescription:
-      "Declaratia trimestriala a SRL-urilor micro — impozit pe cifra de afaceri.",
+      "Declaratia trimestriala a SRL-urilor micro - impozit pe cifra de afaceri.",
     category: "declaratii",
     content: [
       {
@@ -230,7 +230,7 @@ const TOPICS: BibliotecaTopic[] = [
       },
       {
         heading: "Cine depune D100?",
-        body: "Toate SRL-urile, indiferent de regimul fiscal (micro-intreprindere sau impozit pe profit). Persoanele fizice (PFA) nu depun D100 — ele folosesc Declaratia Unica (D212).",
+        body: "Toate SRL-urile, indiferent de regimul fiscal (micro-intreprindere sau impozit pe profit). Persoanele fizice (PFA) nu depun D100 - ele folosesc Declaratia Unica (D212).",
       },
       {
         heading: "Cand se depune?",
@@ -247,17 +247,163 @@ const TOPICS: BibliotecaTopic[] = [
     ],
   },
 
+  {
+    slug: "d112",
+    title: "D112 (Declaratia privind contributiile sociale)",
+    shortDescription:
+      "Declaratia lunara a SRL-urilor - impozit pe salarii, CAS, CASS si contributii angajati.",
+    category: "declaratii",
+    content: [
+      {
+        heading: "Ce este D112?",
+        body: "Declaratia 112 este formularul prin care SRL-urile raporteaza lunar toate contributiile sociale si impozitul pe venit retinute de la angajati. Chiar daca ai un singur angajat (inclusiv administratorul cu contract de mandat), trebuie sa depui D112.",
+      },
+      {
+        heading: "Cine depune D112?",
+        body: "Toate SRL-urile care au angajati cu contract de munca, colaboratori cu contracte de management/mandat, sau care platesc venituri din care retin impozit la sursa (inclusiv dividende). Daca SRL-ul nu are angajati si nu distribuie dividende, nu trebuie sa depuna D112.",
+      },
+      {
+        heading: "Ce declari in D112?",
+        body: "In D112 raportezi pentru fiecare angajat: salariul brut, CAS angajat (25%) si angajator (0% in 2026 - transferat la angajat), CASS angajat (10%), impozitul pe venit retinut (10%), contributia asiguratorie pentru munca (CAM - 2.25%). Include si evidenta nominala a fiecarei persoane asigurate.",
+      },
+      {
+        heading: "Cand se depune?",
+        body: "D112 se depune lunar, pana pe data de 25 a lunii urmatoare celei pentru care se face raportarea. Exemplu: D112 pentru ianuarie se depune pana pe 25 februarie. Plata contributiilor se face in acelasi termen, in contul unic de la Trezorerie.",
+      },
+      {
+        heading: "D112 si dividendele",
+        body: "Cand SRL-ul distribuie dividende, impozitul de 16% retinut la sursa se declara tot prin D112, in luna in care s-a facut plata dividendelor. Acest lucru este separat de CASS-ul pe dividende pe care asociatul il declara personal prin D212.",
+      },
+    ],
+  },
+  {
+    slug: "d205",
+    title: "D205 (Declaratia informativa privind impozitul retinut la sursa)",
+    shortDescription:
+      "Declaratia anuala informativa - SRL-ul raporteaza toate veniturile platite persoanelor fizice.",
+    category: "declaratii",
+    content: [
+      {
+        heading: "Ce este D205?",
+        body: "Declaratia 205 este un formular informativ anual prin care SRL-ul raporteaza catre ANAF toate veniturile platite catre persoane fizice si impozitul retinut la sursa. Gandeste-te la ea ca la un rezumat anual: ANAF stie deja din D112 lunar, dar D205 confirma totalurile.",
+      },
+      {
+        heading: "Cine depune D205?",
+        body: "Orice SRL (sau alta persoana juridica) care a platit venituri catre persoane fizice in anul precedent: dividende, chirii, drepturi de autor, premii, contracte civile. Daca ai distribuit dividende catre asociati, esti obligat sa depui D205.",
+      },
+      {
+        heading: "Ce contine D205?",
+        body: "Pentru fiecare beneficiar de venit (persoana fizica), D205 include: datele de identificare (CNP, nume), tipul venitului (dividende, chirie, etc.), venitul brut platit, impozitul retinut la sursa, si venitul net platit. Este un formular centralizator.",
+      },
+      {
+        heading: "Cand se depune?",
+        body: "D205 se depune anual, pana pe 28 februarie (sau 1 martie in ani bisecti) a anului urmator celui in care s-au facut platile. Exemplu: dividendele distribuite in 2026 se raporteaza in D205 depusa pana pe 28 februarie 2027.",
+      },
+      {
+        heading: "Sfaturi practice",
+        body: "Tine o evidenta clara a tuturor platilor catre persoane fizice pe tot parcursul anului - nu astepta februarie sa reconstruiesti informatiile. D205 trebuie sa fie coerenta cu D112-urile lunare depuse. Discrepantele pot genera notificari de la ANAF.",
+      },
+    ],
+  },
+  {
+    slug: "d300",
+    title: "D300 (Decontul de TVA)",
+    shortDescription:
+      "Declaratia trimestriala pentru platitorii de TVA - raportezi TVA colectat si TVA deductibil.",
+    category: "declaratii",
+    content: [
+      {
+        heading: "Ce este D300?",
+        body: "Decontul de TVA (formularul 300) este declaratia prin care platitorii de TVA raporteaza TVA-ul colectat de la clienti si TVA-ul deductibil de pe facturile furnizorilor. Diferenta se plateste la stat (TVA de plata) sau se recupereaza (TVA de rambursat).",
+      },
+      {
+        heading: "Cine depune D300?",
+        body: "Toate persoanele impozabile inregistrate in scopuri de TVA - atat PFA-uri cat si SRL-uri care au depasit plafonul de 395,000 lei sau care au optat voluntar pentru TVA. Daca nu esti platitor de TVA, nu depui D300.",
+      },
+      {
+        heading: "Cand se depune?",
+        body: "De regula, trimestrial - pana pe 25 a lunii urmatoare trimestrului: 25 aprilie (T1), 25 iulie (T2), 25 octombrie (T3), 25 ianuarie (T4). Firmele mari (cifra de afaceri peste 100,000 EUR in anul precedent) depun D300 lunar. Frecventa ti se comunica de ANAF la inregistrarea in scopuri de TVA.",
+      },
+      {
+        heading: "Ce completezi?",
+        body: "In D300 treci: TVA colectat (totalul TVA-ului de pe facturile emise catre clienti), TVA deductibil (totalul TVA-ului de pe facturile primite de la furnizori), si diferenta - TVA de plata sau TVA de rambursat. Platesti diferenta in acelasi termen cu depunerea.",
+      },
+      {
+        heading: "Exemplu practic",
+        body: "In T1 ai emis facturi de 100,000 lei + 19,000 lei TVA (colectat). Ai primit facturi de la furnizori de 30,000 lei + 5,700 lei TVA (deductibil). TVA de plata = 19,000 - 5,700 = 13,300 lei. Depui D300 pana pe 25 aprilie si platesti 13,300 lei.",
+      },
+    ],
+  },
+  {
+    slug: "d394",
+    title: "D394 (Declaratia informativa privind livrarile si achizitiile pe teritoriul national)",
+    shortDescription:
+      "Declaratia trimestriala informativa - detalii despre facturile emise si primite in Romania.",
+    category: "declaratii",
+    content: [
+      {
+        heading: "Ce este D394?",
+        body: "Declaratia 394 este un formular informativ prin care platitorii de TVA raporteaza detaliat toate facturile emise si primite pe teritoriul national. ANAF o foloseste ca sa verifice corespondenta intre furnizor si client - daca tu ai declarat o factura, clientul tau ar trebui sa o declare si el.",
+      },
+      {
+        heading: "Cine depune D394?",
+        body: "Toate persoanele inregistrate in scopuri de TVA (PFA sau SRL) care au efectuat livrari de bunuri sau prestari de servicii pe teritoriul Romaniei. Daca esti platitor de TVA, trebuie sa depui D394.",
+      },
+      {
+        heading: "Ce contine D394?",
+        body: "D394 contine informatii detaliate despre fiecare factura: codul fiscal al partenerului, numarul si data facturii, baza impozabila, TVA-ul, tipul operatiunii. Se completeaza separat pentru livrari (facturi emise) si achizitii (facturi primite).",
+      },
+      {
+        heading: "Cand se depune?",
+        body: "Trimestrial, pana pe data de 30 a lunii urmatoare trimestrului: 30 aprilie (T1), 30 iulie (T2), 30 octombrie (T3), 30 ianuarie (T4). Atentie: termenul e 30, nu 25 ca la D300 - sunt 5 zile in plus.",
+      },
+      {
+        heading: "Sfaturi practice",
+        body: "D394 este laborioasa daca ai multe facturi - necesita detalii per factura. Foloseste un soft de contabilitate care exporta automat D394. Verifica sa nu ai diferente intre totalurile din D394 si cele din D300 - ANAF compara automat si trimite notificari de neconcordanta.",
+      },
+    ],
+  },
+  {
+    slug: "d390",
+    title: "D390 (Declaratia recapitulativa privind operatiunile intracomunitare)",
+    shortDescription:
+      "Declaratia pentru tranzactii cu firme din UE - obligatorie daca facturezi in alte tari din Uniunea Europeana.",
+    category: "declaratii",
+    content: [
+      {
+        heading: "Ce este D390?",
+        body: "Declaratia 390 (recapitulativa) este formularul prin care raportezi toate tranzactiile cu firme din alte state membre UE. Este obligatorie daca ai livrat bunuri sau prestat servicii catre firme inregistrate in scopuri de TVA in alte tari din Uniunea Europeana.",
+      },
+      {
+        heading: "Cine depune D390?",
+        body: "Platitorii de TVA din Romania care au efectuat in cursul trimestrului: livrari intracomunitare de bunuri, prestari de servicii catre firme din UE (cu locul prestarii in alt stat membru), sau achizitii intracomunitare. Daca facturezi doar clienti din Romania, nu trebuie sa depui D390.",
+      },
+      {
+        heading: "Exemplu tipic",
+        body: "Esti freelancer IT (PFA sau SRL) si facturezi servicii catre o firma din Germania. Factura se emite fara TVA (mecanismul de taxare inversa - reverse charge). Trebuie sa raportezi aceasta operatiune in D390, mentionand codul de TVA al firmei germane si valoarea serviciului.",
+      },
+      {
+        heading: "Cand se depune?",
+        body: "Trimestrial, pana pe data de 25 a lunii urmatoare trimestrului: 25 aprilie, 25 iulie, 25 octombrie, 25 ianuarie. Daca ai livrari intracomunitare de bunuri care depasesc 50,000 EUR intr-un trimestru, depui D390 lunar.",
+      },
+      {
+        heading: "Ce completezi?",
+        body: "Pentru fiecare partener din UE: codul de TVA al partenerului, tara, tipul operatiunii (livrare de bunuri, prestare de servicii, achizitie), si valoarea totala a tranzactiilor in perioada de raportare. Se depune exclusiv online, prin SPV.",
+      },
+    ],
+  },
+
   // ── TVA ──────────────────────────────────────────────────
   {
     slug: "tva",
     title: "TVA (Taxa pe Valoarea Adaugata)",
     shortDescription:
-      "Taxa de consum — obligatorie peste 395,000 lei cifra de afaceri, cu declaratie D300 trimestriala.",
+      "Taxa de consum - obligatorie peste 395,000 lei cifra de afaceri, cu declaratie D300 trimestriala.",
     category: "tva",
     content: [
       {
         heading: "Ce este TVA?",
-        body: "TVA este o taxa pe consum pe care o colectezi de la clientii tai si o virezi la bugetul de stat. Nu este un cost al tau — esti doar intermediar. Cotele standard sunt: 19% (general), 9% (alimente, medicamente, turism), 5% (carti, locuinte sociale).",
+        body: "TVA este o taxa pe consum pe care o colectezi de la clientii tai si o virezi la bugetul de stat. Nu este un cost al tau - esti doar intermediar. Cotele standard sunt: 19% (general), 9% (alimente, medicamente, turism), 5% (carti, locuinte sociale).",
       },
       {
         heading: "Cand devii platitor de TVA?",
@@ -269,7 +415,7 @@ const TOPICS: BibliotecaTopic[] = [
       },
       {
         heading: "Declaratia D300",
-        body: "Ca platitor de TVA, depui D300 (Decontul de TVA) trimestrial — pana pe 25 a lunii urmatoare trimestrului. In D300 raportezi TVA colectat si TVA deductibil, iar diferenta o platesti sau ti se ramburseaza.",
+        body: "Ca platitor de TVA, depui D300 (Decontul de TVA) trimestrial - pana pe 25 a lunii urmatoare trimestrului. In D300 raportezi TVA colectat si TVA deductibil, iar diferenta o platesti sau ti se ramburseaza.",
       },
       {
         heading: "TVA si PFA pe norma de venit",
@@ -283,7 +429,7 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "micro-intreprindere",
     title: "Micro-intreprindere (SRL)",
     shortDescription:
-      "SRL cu impozit de 1% pe venituri — simplu, fara contabilitate de profit, pana la 100,000 EUR.",
+      "SRL cu impozit de 1% pe venituri - simplu, fara contabilitate de profit, pana la 100,000 EUR.",
     category: "srl",
     content: [
       {
@@ -312,7 +458,7 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "dividende-srl",
     title: "Dividende SRL",
     shortDescription:
-      "Cum scoti bani din SRL — 16% impozit, CASS pe praguri, si decizia asociatului unic.",
+      "Cum scoti bani din SRL - 16% impozit, CASS pe praguri, si decizia asociatului unic.",
     category: "srl",
     content: [
       {
@@ -325,7 +471,7 @@ const TOPICS: BibliotecaTopic[] = [
       },
       {
         heading: "CASS pe dividende",
-        body: "Din 2024, daca dividendele tale depasesc anumite praguri, datorezi CASS (10%) ca persoana fizica. Pragurile: sub 6 salarii minime anuale (sub 24,300 lei) — nu platesti CASS. Intre 6x si 12x (24,300 - 48,600 lei) — CASS la baza de 6 salarii (2,430 lei). Intre 12x si 24x (48,600 - 97,200 lei) — CASS la 12 salarii (4,860 lei). Peste 24x (peste 97,200 lei) — CASS la 24 salarii (9,720 lei).",
+        body: "Din 2024, daca dividendele tale depasesc anumite praguri, datorezi CASS (10%) ca persoana fizica. Pragurile: sub 6 salarii minime anuale (sub 24,300 lei) - nu platesti CASS. Intre 6x si 12x (24,300 - 48,600 lei) - CASS la baza de 6 salarii (2,430 lei). Intre 12x si 24x (48,600 - 97,200 lei) - CASS la 12 salarii (4,860 lei). Peste 24x (peste 97,200 lei) - CASS la 24 salarii (9,720 lei).",
       },
       {
         heading: "Decizia asociatului unic",
@@ -343,7 +489,7 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "caen",
     title: "CAEN (Clasificarea Activitatilor din Economia Nationala)",
     shortDescription:
-      "Codul care descrie activitatea ta — conteaza pentru norma de venit, TVA si declaratii.",
+      "Codul care descrie activitatea ta - conteaza pentru norma de venit, TVA si declaratii.",
     category: "regimuri",
     content: [
       {
@@ -368,7 +514,7 @@ const TOPICS: BibliotecaTopic[] = [
     slug: "spv",
     title: "SPV (Spatiul Privat Virtual)",
     shortDescription:
-      "Portalul online al ANAF — aici depui declaratii, vezi datorii si comunici cu Fiscul.",
+      "Portalul online al ANAF - aici depui declaratii, vezi datorii si comunici cu Fiscul.",
     category: "declaratii",
     content: [
       {

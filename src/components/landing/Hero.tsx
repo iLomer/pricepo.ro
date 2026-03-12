@@ -49,7 +49,7 @@ export function Hero() {
           >
             Nu mai plati lunar pentru ceva ce poti invata in cateva ore.
             Prevo iti arata exact ce declaratii ai, cand le depui si cat
-            datorezi &mdash; fara frica de greseli, fara surprize de la ANAF.
+            datorezi - fara frica de greseli, fara surprize de la ANAF.
           </p>
 
           <div

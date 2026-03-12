@@ -35,7 +35,7 @@ const features = [
     span: "md:col-span-2",
   },
   {
-    title: "Biblioteca fiscala",
+    title: "Wiki fiscal",
     description:
       "Termeni fiscali explicati pe intelesul tuturor. Nu legaleza, ci informatii clare pe care le poti folosi imediat.",
     icon: BookIcon,

@@ -18,7 +18,11 @@ export async function POST(request: Request) {
   const authHeader = request.headers.get("authorization");
   const cronSecret = process.env.CRON_SECRET;
 
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+  if (!cronSecret) {
+    return NextResponse.json({ error: "CRON_SECRET nu este configurat" }, { status: 500 });
+  }
+
+  if (authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: "Neautorizat" }, { status: 401 });
   }
 
@@ -123,6 +127,5 @@ export async function POST(request: Request) {
   return NextResponse.json({
     message: `Procesat ${emailsToSend.length} alerte`,
     emailsSent: emailsToSend.length,
-    details: emailsToSend,
   });
 }

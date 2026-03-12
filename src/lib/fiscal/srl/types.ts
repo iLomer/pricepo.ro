@@ -2,10 +2,10 @@
  * SRL-specific fiscal types for Prevo.
  * Used by all E7 SRL features: dividend simulator, CASS estimator, cash flow, D100 calendar.
  *
- * 2026: OUG 89/2025 eliminated micro 3% — all micros pay 1% flat.
+ * 2026: OUG 89/2025 eliminated micro 3% - all micros pay 1% flat.
  */
 
-/** Micro tax regime type — only micro_1 exists from 2026 */
+/** Micro tax regime type - only micro_1 exists from 2026 */
 export type SRLMicroRegime = "micro_1";
 
 /** Breakdown of SRL micro tax calculation */

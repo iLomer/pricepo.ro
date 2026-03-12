@@ -4,7 +4,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 
 const siteUrl = "https://prevo.ro";
-const title = "Prevo — Educatie fiscala pentru PFA si SRL";
+const title = "Prevo - Educatie fiscala pentru PFA si SRL";
 const description =
   "Invata sa iti gestionezi singur taxele. Calendar fiscal personalizat, estimator taxe, ghiduri declaratii PFA si SRL. Fara contabil.";
 
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Prevo — Educatie fiscala pentru PFA si SRL",
+        alt: "Prevo - Educatie fiscala pentru PFA si SRL",
       },
     ],
   },

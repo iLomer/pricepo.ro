@@ -35,7 +35,7 @@ export default async function SituatieFinanciaraPage() {
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-foreground">Situatie financiara SRL</h1>
         <p className="mt-1 text-sm text-secondary-500">
-          Vedere completa: venituri, impozit micro, dividende, CASS si net in mana — totul intr-un singur loc.
+          Vedere completa: venituri, impozit micro, dividende, CASS si net in mana - totul intr-un singur loc.
         </p>
       </div>
       <SRLOverview />

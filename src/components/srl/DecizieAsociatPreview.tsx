@@ -44,43 +44,49 @@ export function DecizieAsociatPreview({ formData }: DecizieAsociatPreviewProps) 
     const printWindow = window.open("", "_blank");
     if (!printWindow) return;
 
-    printWindow.document.write(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Decizia Asociatului Unic - ${formData.companyName || "SRL"}</title>
-        <style>
-          body {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 14px;
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 20px;
-            color: #000;
-          }
-          h1 { font-size: 16px; text-align: center; margin-bottom: 8px; }
-          h2 { font-size: 14px; text-align: center; margin-bottom: 24px; font-weight: normal; }
-          .header { text-align: center; margin-bottom: 32px; }
-          .body { text-align: justify; }
-          .signature { margin-top: 48px; }
-          .disclaimer {
-            margin-top: 48px;
-            padding-top: 16px;
-            border-top: 1px solid #ccc;
-            font-size: 10px;
-            color: #666;
-            font-style: italic;
-          }
-          @media print {
-            body { margin: 20px; }
-            .disclaimer { color: #999; }
-          }
-        </style>
-      </head>
-      <body>${printRef.current.innerHTML}</body>
-      </html>
-    `);
+    const printStyles = `
+      body {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 20px;
+        color: #000;
+      }
+      h1 { font-size: 16px; text-align: center; margin-bottom: 8px; }
+      h2 { font-size: 14px; text-align: center; margin-bottom: 24px; font-weight: normal; }
+      .header { text-align: center; margin-bottom: 32px; }
+      .body { text-align: justify; }
+      .signature { margin-top: 48px; }
+      .disclaimer {
+        margin-top: 48px;
+        padding-top: 16px;
+        border-top: 1px solid #ccc;
+        font-size: 10px;
+        color: #666;
+        font-style: italic;
+      }
+      @media print {
+        body { margin: 20px; }
+        .disclaimer { color: #999; }
+      }
+    `;
+
+    const doc = printWindow.document;
+    doc.open();
+    doc.write("<!DOCTYPE html><html><head>");
+    doc.write("<title>Decizia Asociatului Unic</title>");
+    doc.write("</head><body></body></html>");
+    doc.close();
+
+    const style = doc.createElement("style");
+    style.textContent = printStyles;
+    doc.head.appendChild(style);
+
+    // Clone the preview content into the print window safely (no innerHTML injection)
+    const clone = printRef.current.cloneNode(true);
+    doc.body.appendChild(doc.adoptNode(clone));
     printWindow.document.close();
     printWindow.print();
   }

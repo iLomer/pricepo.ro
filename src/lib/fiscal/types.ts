@@ -86,17 +86,17 @@ export interface NormaDeVenitEntry {
  * Minimum gross salary: 4,050 lei/month (Jan-Jun 2026), 4,325 lei/month (Jul-Dec 2026).
  * Thresholds use the Jan 1 value (4,050 lei) per ANAF rules.
  *
- * CAS (pensie) — 25%:
+ * CAS (pensie) - 25%:
  *   Below 12x: 0 (optional)
  *   12x - 24x: 25% of 12x minimum salaries
  *   Above 24x: 25% of 24x minimum salaries
  *
- * CASS (sanatate) — 10%:
+ * CASS (sanatate) - 10%:
  *   Below 6x: 10% of 6x (minimum floor, unless also employed)
  *   6x - 72x: 10% of actual income
  *   Above 72x: 10% of 72x (cap)
  *
- * Income tax — 10% of taxable base (after CAS + CASS deductions)
+ * Income tax - 10% of taxable base (after CAS + CASS deductions)
  */
 export const FISCAL_CONSTANTS_2026 = {
   /** CAS rate: 25% */
@@ -105,9 +105,9 @@ export const FISCAL_CONSTANTS_2026 = {
   CASS_RATE: 0.10,
   /** Income tax rate: 10% */
   INCOME_TAX_RATE: 0.10,
-  /** Minimum gross salary per month (lei) — Jan-Jun 2026 */
+  /** Minimum gross salary per month (lei) - Jan-Jun 2026 */
   MINIMUM_GROSS_SALARY_MONTHLY: 4050,
-  /** Annual minimum gross salary (lei) — 4,050 x 12 */
+  /** Annual minimum gross salary (lei) - 4,050 x 12 */
   MINIMUM_GROSS_SALARY_ANNUAL: 4050 * 12,
   /** 6x minimum salary threshold (CASS minimum floor) */
   CASS_THRESHOLD_6X: 4050 * 6,
@@ -117,7 +117,7 @@ export const FISCAL_CONSTANTS_2026 = {
   CAS_THRESHOLD_24X: 4050 * 24,
   /** 72x minimum salary (CASS cap) */
   CASS_CAP_72X: 4050 * 72,
-  /** TVA registration threshold (lei) — from April 2025 */
+  /** TVA registration threshold (lei) - from April 2025 */
   TVA_THRESHOLD: 395000,
   /** Fiscal year */
   FISCAL_YEAR: 2026,
