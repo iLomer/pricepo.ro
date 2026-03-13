@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { FeedbackBubble } from "@/components/feedback/FeedbackBubble";
 import "./globals.css";
 
@@ -45,6 +46,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro">
+      <head>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="8e8347ae-4263-45a1-b36a-8ed18dc8a5b6"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="antialiased">
         {children}
         <FeedbackBubble />
