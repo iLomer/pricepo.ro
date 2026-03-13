@@ -245,6 +245,25 @@ export function DashboardShell({ entityType, regime, isPro, children }: Dashboar
         {/* Main content */}
         <main className="min-h-[calc(100vh-57px)] min-w-0 flex-1 overflow-x-hidden p-4 lg:p-6">
           {children}
+
+          {/* Disclaimer */}
+          <div className="mt-12 mb-8 rounded-xl border border-warning-200 bg-warning-50 p-5">
+            <div className="flex gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 h-5 w-5 shrink-0 text-warning-600">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+              <div>
+                <p className="text-sm font-semibold text-warning-800">
+                  Prevo este un instrument educational, nu consultanta fiscala
+                </p>
+                <p className="mt-1.5 text-sm leading-relaxed text-warning-700">
+                  Informatiile din Prevo sunt actualizate si verificate, dar nu inlocuiesc sfatul unui consultant fiscal autorizat. Verifica intotdeauna informatiile cu sursele oficiale (ANAF, Monitorul Oficial) sau cu un specialist inainte de a lua decizii fiscale importante.
+                </p>
+              </div>
+            </div>
+          </div>
         </main>
       </div>
 

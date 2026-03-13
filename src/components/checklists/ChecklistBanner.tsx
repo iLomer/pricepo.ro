@@ -11,7 +11,7 @@ interface ChecklistBannerProps {
 export function ChecklistBanner({ checklist }: ChecklistBannerProps) {
   const [completedSteps, setCompletedSteps] = useState<string[]>([]);
   const [dismissed, setDismissed] = useState(false);
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
