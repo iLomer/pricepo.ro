@@ -41,7 +41,7 @@ Aligned with MVP phases from product vision. Refine with @meto-pm.
 ---
 
 ## E6 -- ANAF Integration (Phase 2)
-**Goal:** OAuth2 integration with SPV ANAF, automatic e-Factura sync (read-only), fiscal vector reading, and automatic legislative alerts. Requires qualified digital certificate per user. e-Factura data is consumed read-only by the estimator, alerts, and calendar — it is NOT displayed as a ledger or used for bookkeeping (see D008).
+**Goal:** OAuth2 integration with SPV ANAF, automatic e-Factura sync (read-only), fiscal vector reading, and automatic legislative alerts. Requires qualified digital certificate per user. e-Factura data is consumed read-only by the estimator, alerts, and calendar -- it is NOT displayed as a ledger or used for bookkeeping (see D008).
 **Status:** Not started (Phase 2 -- after PFA features validated)
 **Tasks:** To be sliced by @meto-pm
 
@@ -64,3 +64,57 @@ Aligned with MVP phases from product vision. Refine with @meto-pm.
 **Status:** DROPPED -- Product pivot (D008). Prevo does not offer bookkeeping features. The Registru feature this epic depended on has been removed entirely.
 **Dropped date:** 2026-03-11
 **Dropped tasks:** slice-033, slice-034, slice-035, slice-036
+
+---
+
+## E9 -- Source Citations for Fiscal Data
+**Goal:** Add verifiable legislative source citations to all fiscal content in Prevo. Every tax rate, deadline, threshold, formula, and fiscal rule should reference the specific law, OUG, HG, or ANAF order it comes from. Users should be able to verify any claim against the original legislation.
+**Status:** Sliced -- 5 tasks (slice-037 through slice-041) in tasks-todo.md
+**Scope:**
+- Extend BibliotecaTopic interface and fiscal data types with a `sources` field
+- Research and populate citations for all 19 wiki topics
+- Research and populate citations for PFA tax logic (pfa-taxes.ts, pfa-deadlines.ts, norma-venit.ts)
+- Research and populate citations for SRL fiscal logic (srl/constants.ts, srl/micro-tax.ts, etc.)
+- Display sources in wiki topic pages (footer section) and fiscal calculation UIs
+**Dependency graph:**
+- **Wave 1 (no deps):** slice-037 (Data model + types)
+- **Wave 2 (after slice-037, parallel):** slice-038 (Wiki topic citations) + slice-039 (PFA/SRL fiscal logic citations)
+- **Wave 3 (after slice-037):** slice-040 (Wiki sources UI)
+- **Wave 4 (after slice-040 + slice-039):** slice-041 (Estimator/calendar sources UI)
+**Tasks:** slice-037 (Citation data model), slice-038 (Wiki topic citations data), slice-039 (Fiscal logic citations data), slice-040 (Wiki sources display UI), slice-041 (Estimator and calendar sources UI)
+
+---
+
+## E10 -- Legislative Monitor (Alerte Legislative)
+**Goal:** Build a curated legislative feed that makes recent Romanian fiscal legislation changes accessible within Prevo. Summarize new OUGs, laws, and ANAF orders in plain Romanian, explain the concrete impact on PFA/SRL users, and link to official sources. Ties into the existing "Alerte legislative" feature from the product vision and the existing /alerte page.
+**Status:** Sliced -- 5 tasks (slice-042 through slice-046) in tasks-todo.md
+**Scope:**
+- Data model for legislative updates (Supabase table with RLS)
+- Static seed data: curate the most impactful recent fiscal legislation changes (2024-2026)
+- Public /legislatie page with chronological feed of legislative changes
+- Per-update detail view with plain-language summary + impact analysis + official source links
+- Integration with dashboard: "Ce s-a schimbat recent" widget on /panou
+**Dependency graph:**
+- **Wave 1 (no deps, parallel):** slice-042 (Data model + types) + slice-043 (Seed legislative data)
+- **Wave 2 (after slice-042 + slice-043):** slice-044 (Legislative feed page)
+- **Wave 3 (after slice-044):** slice-045 (Detail page with impact analysis)
+- **Wave 4 (after slice-044):** slice-046 (Dashboard widget)
+**Tasks:** slice-042 (Legislative update data model), slice-043 (Seed legislative data), slice-044 (Legislative feed page), slice-045 (Legislative detail + impact page), slice-046 (Dashboard legislative widget)
+
+---
+
+## E11 -- UX Differentiators (Scenario Comparison, Timeline, Checklists, Citations Cleanup)
+**Goal:** Four high-impact features that integrate into existing pages to differentiate Prevo from competitors. What-If Scenario Comparison on the estimator, Fiscal Year Timeline on the calendar, Guided Checklists on the dashboard, and Source Citations Cleanup across wiki and estimator. No new routes -- all changes enhance existing pages.
+**Status:** Sliced -- 9 tasks (slice-047 through slice-055) in tasks-todo.md
+**Scope:**
+- What-If Scenario Comparison: toggle on `/estimator` to compare two regimes side-by-side (e.g., norma vs sistem real)
+- Fiscal Year Timeline: annual timeline on `/calendar` showing cumulative payment amounts across the year
+- Guided Checklists: contextual banners on `/panou` with interactive checklist steps for key fiscal moments (e.g., first year as PFA)
+- Source Citations Cleanup: update existing vague sources in biblioteca.ts to exact article numbers, display as text footnotes
+**Dependency graph:**
+- **Wave 1 (all independent, parallel):** slice-047 (Comparison logic) + slice-050 (Timeline logic) + slice-053 (Checklist data model) + slice-055 (Citations cleanup)
+- **Wave 2 (after slice-047):** slice-048 (Comparison UI toggle) + slice-049 (Side-by-side display)
+- **Wave 3 (after slice-050):** slice-051 (Timeline UI)
+- **Wave 4 (after slice-053):** slice-054 (Checklist UI on dashboard)
+- Note: slice-049 depends on slice-048, slice-051 depends on slice-050, slice-054 depends on slice-053
+**Tasks:** slice-047 (Comparison tax calculation), slice-048 (Comparison toggle UI), slice-049 (Side-by-side breakdown display), slice-050 (Timeline data aggregation), slice-051 (Timeline visual on calendar), slice-052 (Timeline cumulative totals), slice-053 (Checklist data + persistence), slice-054 (Checklist banners on dashboard), slice-055 (Citations cleanup -- exact article numbers)

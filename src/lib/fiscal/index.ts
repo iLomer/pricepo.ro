@@ -38,6 +38,18 @@ export {
   getAllNormaDeVenitEntries,
 } from "./norma-venit";
 
+// Regime comparison
+export {
+  type ComparisonBreakdown,
+  calculateComparisonBreakdown,
+} from "./comparison";
+
+// Timeline
+export {
+  type TimelineEntry,
+  buildAnnualTimeline,
+} from "./timeline";
+
 // SRL fiscal logic
 export {
   // Types

@@ -70,8 +70,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza CAS pentru activitati independente — cota de 25%, praguri, baze de calcul", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
-      { act: "HG privind salariul minim brut 2026", relevance: "Stabileste salariul minim de 4,050 lei/luna, baza de calcul pentru pragurile CAS" },
+      { act: "Codul Fiscal, art. 148-150 (Legea 227/2015)", relevance: "Cota CAS de 25%, pragurile de 12x si 24x salarii minime, baza de calcul pentru activitati independente" },
+      { act: "HG 1.447/2025 privind salariul minim brut", relevance: "Salariul minim brut de 4,050 lei/luna, utilizat la calculul pragurilor CAS" },
     ],
   },
   {
@@ -103,8 +103,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza CASS pentru activitati independente — cota 10%, plafon minim 6x si maxim 72x salarii minime", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
-      { act: "HG privind salariul minim brut 2026", relevance: "Stabileste salariul minim de 4,050 lei/luna, baza pentru plafoanele CASS" },
+      { act: "Codul Fiscal, art. 170-174 (Legea 227/2015)", relevance: "Cota CASS de 10%, plafon minim 6x si maxim 72x salarii minime, calcul proportional" },
+      { act: "HG 1.447/2025 privind salariul minim brut", relevance: "Salariul minim brut de 4,050 lei/luna, utilizat la calculul plafoanelor CASS" },
     ],
   },
 
@@ -138,8 +138,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza impozitul pe venit din activitati independente — cota 10%, calcul venit net", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
-      { act: "Codul Fiscal — modificari 2024", relevance: "CAS si CASS devin cheltuieli deductibile din baza impozabila incepand cu 2024" },
+      { act: "Codul Fiscal, art. 68-69 (Legea 227/2015)", relevance: "Cota impozitului pe venit de 10%, calculul venitului net, deducerea CAS si CASS din baza impozabila" },
+      { act: "OUG 115/2023, art. I pct. 34", relevance: "CAS si CASS deductibile din baza impozabila incepand cu anul fiscal 2024" },
     ],
   },
 
@@ -173,7 +173,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza stabilirea venitului net pe baza normelor de venit, pe coduri CAEN si judete", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Codul Fiscal, art. 69 (Legea 227/2015)", relevance: "Stabilirea venitului net pe baza normelor de venit, pe coduri CAEN si judete" },
+      { act: "Codul Fiscal, art. 67 alin. (2)", relevance: "Conditiile de eligibilitate pentru regimul norma de venit" },
     ],
   },
   {
@@ -205,7 +206,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza calculul venitului net la sistem real — venituri minus cheltuieli deductibile, evidenta contabila in partida simpla", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Codul Fiscal, art. 68 (Legea 227/2015)", relevance: "Calculul venitului net la sistem real — venituri minus cheltuieli deductibile" },
+      { act: "Codul Fiscal, art. 68 alin. (4)", relevance: "Lista cheltuielilor deductibile si conditiile de deducere" },
     ],
   },
 
@@ -239,8 +241,9 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Obligatia depunerii Declaratiei Unice pentru venituri din activitati independente", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
-      { act: "Ordin ANAF privind formularul D212", relevance: "Stabileste formularul, structura si instructiunile de completare a Declaratiei Unice" },
+      { act: "Codul de Procedura Fiscala, art. 120-122 (Legea 207/2015)", relevance: "Obligatia depunerii D212, termenul de 25 mai, continutul declaratiei" },
+      { act: "OUG 8/2026, art. I pct. 3", relevance: "Reducerea bonusului de depunere anticipata de la 5% la 3% din impozitul pe venit (termen 15 aprilie)" },
+      { act: "OPANAF 49/2019 actualizat", relevance: "Formularul D212, structura si instructiunile de completare" },
     ],
   },
   {
@@ -272,8 +275,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza declararea si plata impozitului pe veniturile micro-intreprinderilor prin D100", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
-      { act: "Ordin ANAF privind formularul D100", relevance: "Stabileste formularul si instructiunile de completare" },
+      { act: "Codul de Procedura Fiscala, art. 107 (Legea 207/2015)", relevance: "Obligatia declararii trimestriale a impozitului pe veniturile micro-intreprinderilor" },
+      { act: "Codul Fiscal, art. 56 (Legea 227/2015)", relevance: "Termenele de plata a impozitului micro — 25 a lunii urmatoare trimestrului" },
     ],
   },
 
@@ -306,8 +309,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Obligatia declararii lunare a contributiilor sociale si impozitului pe salarii prin D112", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
-      { act: "Ordin ANAF privind formularul D112", relevance: "Stabileste formularul, structura si instructiunile de completare" },
+      { act: "Codul Fiscal, art. 147 (Legea 227/2015)", relevance: "Obligatia declararii lunare a CAS, CASS si impozitului pe salarii" },
+      { act: "Codul Fiscal, art. 174 alin. (5)", relevance: "Retinerea la sursa a CASS de catre angajator" },
     ],
   },
   {
@@ -339,8 +342,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Obligatia informativa a platitorilor de venituri catre persoane fizice — raportare anuala", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
-      { act: "Ordin ANAF privind formularul D205", relevance: "Stabileste formularul si instructiunile de completare" },
+      { act: "Codul Fiscal, art. 132 alin. (2) (Legea 227/2015)", relevance: "Obligatia informativa anuala privind veniturile platite persoanelor fizice si impozitul retinut" },
+      { act: "OPANAF 3.695/2016 actualizat", relevance: "Formularul D205, instructiunile de completare si termenul de depunere (28 februarie)" },
     ],
   },
   {
@@ -372,8 +375,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza decontul de TVA — perioade, calcul, depunere", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
-      { act: "Ordin ANAF privind formularul D300", relevance: "Stabileste formularul si instructiunile de completare a decontului de TVA" },
+      { act: "Codul Fiscal, art. 323 (Legea 227/2015)", relevance: "Obligatia depunerii decontului de TVA, perioade fiscale (lunara/trimestriala)" },
+      { act: "Codul Fiscal, art. 322 alin. (1)", relevance: "Calculul TVA de plata/rambursat — TVA colectat minus TVA deductibil" },
     ],
   },
   {
@@ -405,8 +408,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Obligatia declararii informatiilor privind livrarile si achizitiile pe teritoriul national", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
-      { act: "Ordin ANAF privind formularul D394", relevance: "Stabileste formularul si instructiunile de completare" },
+      { act: "Codul Fiscal, art. 324 (Legea 227/2015)", relevance: "Obligatia declararii informatiilor privind livrarile si achizitiile efectuate pe teritoriul national" },
+      { act: "OPANAF 3.769/2015 actualizat", relevance: "Formularul D394, instructiunile de completare, termenul de 30 a lunii urmatoare trimestrului" },
     ],
   },
   {
@@ -438,7 +441,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza declaratia recapitulativa privind operatiunile intracomunitare", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Codul Fiscal, art. 325 (Legea 227/2015)", relevance: "Obligatia depunerii declaratiei recapitulative pentru operatiuni intracomunitare" },
+      { act: "Codul Fiscal, art. 325 alin. (2)", relevance: "Termenul trimestrial de depunere — 25 a lunii urmatoare trimestrului" },
     ],
   },
 
@@ -472,7 +476,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015) — Titlul VII", relevance: "Reglementeaza TVA — cote, plafon de scutire, inregistrare, decontare", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Codul Fiscal, art. 286-331, Titlul VII (Legea 227/2015)", relevance: "Cotele TVA (19%, 9%, 5%), plafonul de scutire de 395,000 lei, inregistrarea in scopuri de TVA" },
+      { act: "Codul Fiscal, art. 310 alin. (1)", relevance: "Plafonul de scutire pentru mici intreprinderi — 395,000 lei (din aprilie 2025)" },
     ],
   },
 
@@ -506,7 +511,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015) — Titlul III", relevance: "Reglementeaza impozitul pe veniturile micro-intreprinderilor — conditii, cota, plafon", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
+      { act: "Codul Fiscal, art. 47-56, Titlul III (Legea 227/2015)", relevance: "Conditiile pentru regimul micro, cota de impozitare, plafonul de 100,000 EUR" },
+      { act: "OUG 89/2025, art. I pct. 8", relevance: "Cota unica de 1% pe venituri, indiferent de numarul de angajati (din 2025)" },
     ],
   },
   {
@@ -538,8 +544,9 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Codul Fiscal (Legea 227/2015)", relevance: "Reglementeaza impozitul pe dividende (16%) si CASS pe dividende cu praguri pe salarii minime", monitorOficial: "M.Of. nr. 688 din 10.09.2015" },
-      { act: "Legea 31/1990 privind societatile", relevance: "Reglementeaza distribuirea dividendelor, decizia AGA/asociatului unic", monitorOficial: "M.Of. nr. 126-127 din 17.11.1990" },
+      { act: "Codul Fiscal, art. 97 alin. (7) (Legea 227/2015)", relevance: "Impozitul pe dividende de 16%, retinut la sursa de catre SRL" },
+      { act: "Codul Fiscal, art. 174 alin. (5^1)", relevance: "CASS pe dividende — praguri de 6x, 12x si 24x salarii minime" },
+      { act: "Legea 31/1990, art. 67 si art. 196^1", relevance: "Distribuirea dividendelor, decizia AGA/asociatului unic, dividende interimare" },
     ],
   },
 
@@ -569,7 +576,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Ordinul INS 337/2007", relevance: "Stabileste clasificarea CAEN Rev. 2 a activitatilor din economia nationala" },
+      { act: "Ordinul INS 337/2007", relevance: "Clasificarea CAEN Rev. 2 a activitatilor din economia nationala" },
+      { act: "Codul Fiscal, art. 69 alin. (1) (Legea 227/2015)", relevance: "Legatura dintre codul CAEN si eligibilitatea pentru norma de venit" },
     ],
   },
   {
@@ -601,7 +609,8 @@ const TOPICS: BibliotecaTopic[] = [
       },
     ],
     sources: [
-      { act: "Ordin ANAF privind SPV", relevance: "Reglementeaza functionarea Spatiului Privat Virtual — inregistrare, depunere declaratii, comunicare electronica" },
+      { act: "OPANAF 3.599/2019 actualizat", relevance: "Functionarea Spatiului Privat Virtual — inregistrare, depunere declaratii, comunicare electronica" },
+      { act: "Codul de Procedura Fiscala, art. 79 (Legea 207/2015)", relevance: "Comunicarea electronica intre contribuabil si organul fiscal" },
     ],
   },
 ];

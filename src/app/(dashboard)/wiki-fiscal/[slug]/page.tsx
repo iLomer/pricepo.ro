@@ -92,28 +92,31 @@ export default async function TopicPage({ params }: TopicPageProps) {
         ))}
       </div>
 
-      {/* Legislative sources */}
+      {/* Legislative sources as numbered footnotes */}
       {topic.sources && topic.sources.length > 0 && (
         <div className="mt-6 rounded-xl border border-secondary-200 bg-secondary-50 p-5">
-          <h3 className="mb-3 text-sm font-semibold text-secondary-600">
+          <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-secondary-600">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+              <path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
             Baza legala
           </h3>
-          <ul className="space-y-2.5">
+          <ol className="space-y-2">
             {topic.sources.map((source, i) => (
-              <li key={i} className="text-sm">
-                <span className="font-medium text-foreground">{source.act}</span>
-                <p className="mt-0.5 text-secondary-500">{source.relevance}</p>
-                {source.monitorOficial && (
-                  <p className="mt-0.5 text-xs text-secondary-400">
-                    Publicat in {source.monitorOficial}
-                  </p>
-                )}
+              <li key={i} className="flex gap-2 text-sm">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary-200 text-xs font-medium text-secondary-600">
+                  {i + 1}
+                </span>
+                <div>
+                  <span className="font-medium text-foreground">{source.act}</span>
+                  <span className="text-secondary-400"> — </span>
+                  <span className="text-secondary-500">{source.relevance}</span>
+                </div>
               </li>
             ))}
-          </ul>
+          </ol>
           <p className="mt-4 text-xs text-secondary-400 border-t border-secondary-200 pt-3">
-            Informatiile sunt actualizate pentru anul fiscal 2026. Textul integral
-            al actelor normative este disponibil in Monitorul Oficial al Romaniei.
+            Actualizat pentru anul fiscal 2026. Textul integral este disponibil in Monitorul Oficial al Romaniei.
           </p>
         </div>
       )}

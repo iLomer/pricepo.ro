@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { TaxBreakdown } from "@/lib/fiscal";
 
 interface TaxBreakdownDisplayProps {
@@ -141,6 +142,66 @@ export function TaxBreakdownDisplay({ breakdown }: TaxBreakdownDisplayProps) {
           </p>
         </div>
       </div>
+
+      {/* Baza legala - collapsed */}
+      <LegalBasis regime={breakdown.regime} />
+    </div>
+  );
+}
+
+const ESTIMATOR_SOURCES = {
+  cas: "Codul Fiscal, art. 148-150 — cota CAS 25%, praguri 12x/24x salarii minime",
+  cass: "Codul Fiscal, art. 170-174 — cota CASS 10%, plafon 6x-72x salarii minime",
+  impozit: "Codul Fiscal, art. 68-69 — impozit pe venit 10%, deducere CAS/CASS",
+  norma: "Codul Fiscal, art. 69 — stabilirea venitului net pe baza normei de venit",
+  salariu: "HG 1.447/2025 — salariul minim brut de 4,050 lei/luna",
+};
+
+function LegalBasis({ regime }: { regime: string }) {
+  const [open, setOpen] = useState(false);
+
+  const sources = [
+    ESTIMATOR_SOURCES.cas,
+    ESTIMATOR_SOURCES.cass,
+    ESTIMATOR_SOURCES.impozit,
+    ...(regime === "norma_venit" ? [ESTIMATOR_SOURCES.norma] : []),
+    ESTIMATOR_SOURCES.salariu,
+  ];
+
+  return (
+    <div className="rounded-xl border border-secondary-200 bg-secondary-50">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex w-full items-center justify-between px-4 py-3 text-left"
+      >
+        <span className="text-xs font-medium text-secondary-500">
+          Baza legala
+        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`h-3.5 w-3.5 text-secondary-400 transition-transform ${open ? "rotate-180" : ""}`}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      {open && (
+        <div className="border-t border-secondary-200 px-4 pb-3 pt-2">
+          <ol className="space-y-1.5">
+            {sources.map((s, i) => (
+              <li key={i} className="flex gap-2 text-xs text-secondary-500">
+                <span className="shrink-0 font-medium text-secondary-400">[{i + 1}]</span>
+                {s}
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
     </div>
   );
 }
