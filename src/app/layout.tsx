@@ -24,9 +24,11 @@ export const metadata: Metadata = {
     "fara contabil",
   ],
   authors: [{ name: "Prevo" }],
+  metadataBase: new URL("https://prevo.ro"),
   openGraph: {
     type: "website",
     locale: "ro_RO",
+    url: "https://prevo.ro",
     siteName: "Prevo",
   },
 };
