@@ -34,6 +34,13 @@ const features = [
     icon: BookIcon,
     span: "",
   },
+  {
+    title: "Alerte fiscale pe email",
+    description:
+      "Primesti un email inainte de fiecare termen fiscal. Tu alegi cand: cu 7, 3 sau 1 zi inainte. Nu mai ratezi nicio scadenta.",
+    icon: AlertIcon,
+    span: "",
+  },
 ] as const;
 
 function CalendarIcon({ className }: { className?: string }) {
@@ -76,34 +83,42 @@ function BookIcon({ className }: { className?: string }) {
   );
 }
 
+function AlertIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+    </svg>
+  );
+}
+
 export function Features() {
   return (
     <section id="functii" className="relative bg-secondary-100/50 px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl">
-        <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-secondary-400">
+        <p className="text-xs font-medium uppercase tracking-[0.25em] text-secondary-400">
           Functii
         </p>
-        <h2 className="mt-4 max-w-lg text-3xl font-bold tracking-tight text-secondary-900 sm:text-4xl">
+        <h2 className="mt-4 max-w-2xl text-3xl font-bold tracking-tight text-secondary-900 sm:text-4xl lg:text-5xl">
           Tot ce ai nevoie ca sa fii independent fiscal
         </h2>
-        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-secondary-500">
+        <p className="mt-5 max-w-xl text-lg leading-relaxed text-secondary-500">
           Instrumente practice, nu teorie abstracta. Fiecare functie te ajuta
           sa rezolvi o problema reala.
         </p>
 
-        <div className="mt-14 grid gap-3 sm:mt-16 md:grid-cols-3">
+        <div className="mt-14 grid gap-4 sm:mt-16 md:grid-cols-3">
           {features.map((f) => (
             <div
               key={f.title}
-              className={`group rounded-xl border border-secondary-200 bg-white p-6 shadow-sm transition-all hover:border-secondary-300 hover:shadow-md ${f.span}`}
+              className={`group rounded-2xl border border-secondary-200 bg-white p-8 shadow-sm transition-all hover:border-secondary-300 hover:shadow-md ${f.span}`}
             >
-              <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-lg bg-primary-50">
-                <f.icon className="h-[18px] w-[18px] text-primary-600" />
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50">
+                <f.icon className="h-6 w-6 text-primary-600" />
               </div>
-              <h3 className="text-[15px] font-semibold text-secondary-900">
+              <h3 className="text-lg font-semibold text-secondary-900">
                 {f.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-secondary-500">
+              <p className="mt-2 text-base leading-relaxed text-secondary-500">
                 {f.description}
               </p>
             </div>

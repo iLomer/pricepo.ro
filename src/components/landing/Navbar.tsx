@@ -30,7 +30,7 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" aria-label="Prevo acasa">
-          <Logo size="sm" className="text-secondary-900" />
+          <Logo size="md" className="text-secondary-900" />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -38,7 +38,7 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-[13px] text-secondary-400 transition-colors hover:text-secondary-900"
+              className="text-sm text-secondary-400 transition-colors hover:text-secondary-900"
             >
               {l.label}
             </a>
@@ -48,7 +48,7 @@ export function Navbar() {
         <div className="hidden items-center gap-5 md:flex">
           <Link
             href="/autentificare"
-            className="rounded-lg bg-secondary-900 px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-secondary-800"
+            className="rounded-lg bg-secondary-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-secondary-800"
           >
             Intra in cont
           </Link>

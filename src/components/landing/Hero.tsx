@@ -27,12 +27,12 @@ export function Hero() {
 
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-20 pt-32 sm:pt-40">
         <div className="max-w-3xl">
-          <p className="mb-8 animate-fade-up text-[11px] font-medium uppercase tracking-[0.25em] text-primary-600">
+          <p className="mb-8 animate-fade-up text-xs font-medium uppercase tracking-[0.25em] text-primary-600">
             Educatie fiscala pentru PFA si SRL
           </p>
 
           <h1
-            className="animate-fade-up text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.08] tracking-tight text-secondary-900"
+            className="animate-fade-up text-[clamp(2.75rem,7vw,5rem)] font-bold leading-[1.05] tracking-tight text-secondary-900"
             style={{ animationDelay: "100ms" }}
           >
             Tot ce trebuie sa stii
@@ -44,7 +44,7 @@ export function Hero() {
           </h1>
 
           <p
-            className="mt-7 max-w-xl animate-fade-up text-[17px] leading-relaxed text-secondary-500"
+            className="mt-8 max-w-xl animate-fade-up text-lg leading-relaxed text-secondary-500 sm:text-xl"
             style={{ animationDelay: "200ms" }}
           >
             Termene, taxe, declaratii si legislatie actualizata la zi.
@@ -58,16 +58,16 @@ export function Hero() {
           >
             <a
               href="/inregistrare"
-              className="inline-flex items-center justify-center rounded-lg bg-secondary-900 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-secondary-800"
+              className="inline-flex items-center justify-center rounded-xl bg-secondary-900 px-8 py-3.5 text-base font-semibold text-white transition-colors hover:bg-secondary-800"
             >
               Creeaza cont gratuit
             </a>
             <a
               href="#cum-functioneaza"
-              className="group inline-flex items-center justify-center gap-2 rounded-lg border border-secondary-200 px-7 py-3 text-sm font-medium text-secondary-600 transition-all hover:border-secondary-300 hover:text-secondary-900"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl border border-secondary-200 px-8 py-3.5 text-base font-medium text-secondary-600 transition-all hover:border-secondary-300 hover:text-secondary-900"
             >
               Afla cum functioneaza
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-0.5">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-0.5">
                 <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
@@ -82,8 +82,8 @@ export function Hero() {
               "Gratuit pentru calendar fiscal",
               "Pentru PFA si SRL",
             ].map((text) => (
-              <span key={text} className="flex items-center gap-2.5 text-[13px] text-secondary-400">
-                <span className="h-1 w-1 rounded-full bg-accent-500" />
+              <span key={text} className="flex items-center gap-2.5 text-sm text-secondary-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-500" />
                 {text}
               </span>
             ))}

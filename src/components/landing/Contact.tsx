@@ -4,13 +4,13 @@ export function Contact() {
       <div className="mx-auto max-w-6xl">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-secondary-400">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-secondary-400">
               Contact
             </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-secondary-900 sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-secondary-900 sm:text-4xl lg:text-5xl">
               Vorbeste cu noi
             </h2>
-            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-secondary-500">
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-secondary-500">
               Ai o intrebare despre Prevo, despre taxe, sau vrei sa ne spui ce
               functie ti-ar fi utila? Suntem curiosi sa auzim.
             </p>
@@ -18,7 +18,7 @@ export function Contact() {
 
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50">
                 <svg
                   width="18"
                   height="18"
@@ -34,10 +34,10 @@ export function Contact() {
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-semibold text-secondary-900">
+                <p className="text-base font-semibold text-secondary-900">
                   Feedback rapid
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-secondary-500">
+                <p className="mt-1.5 text-[15px] leading-relaxed text-secondary-500">
                   Apasa pe bula din coltul din dreapta-jos al ecranului.
                   Bug, sugestie, intrebare - orice ne ajuta sa facem Prevo mai bun.
                 </p>
@@ -45,7 +45,7 @@ export function Contact() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-50">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-50">
                 <svg
                   width="18"
                   height="18"
@@ -64,10 +64,10 @@ export function Contact() {
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-semibold text-secondary-900">
+                <p className="text-base font-semibold text-secondary-900">
                   Comunitate
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-secondary-500">
+                <p className="mt-1.5 text-[15px] leading-relaxed text-secondary-500">
                   Construim Prevo impreuna cu utilizatorii din beta.
                   Feedback-ul tau influenteaza direct ce functii construim urmatoarele.
                 </p>
@@ -75,7 +75,7 @@ export function Contact() {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-warning-50">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-warning-50">
                 <svg
                   width="18"
                   height="18"
@@ -93,10 +93,10 @@ export function Contact() {
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-semibold text-secondary-900">
+                <p className="text-base font-semibold text-secondary-900">
                   Ai gasit o eroare fiscala?
                 </p>
-                <p className="mt-1 text-sm leading-relaxed text-secondary-500">
+                <p className="mt-1.5 text-[15px] leading-relaxed text-secondary-500">
                   Informatiile fiscale corecte sunt prioritatea noastra #1.
                   Daca observi ceva gresit, spune-ne imediat prin bula de feedback.
                 </p>
