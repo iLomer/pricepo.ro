@@ -222,7 +222,18 @@ export function AuthForm({ mode }: AuthFormProps) {
         </button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-secondary-500">
+      {!isSignUp && (
+        <p className="mt-4 text-center">
+          <Link
+            href="/resetare-parola"
+            className="text-sm text-secondary-400 hover:text-secondary-600"
+          >
+            Ai uitat parola?
+          </Link>
+        </p>
+      )}
+
+      <p className="mt-4 text-center text-sm text-secondary-500">
         {isSignUp ? (
           <>
             Ai deja un cont?{" "}

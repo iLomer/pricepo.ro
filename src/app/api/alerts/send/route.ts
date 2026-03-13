@@ -1,20 +1,19 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient as createServerClient } from "@supabase/supabase-js";
 import { getAllPFADeadlines } from "@/lib/fiscal";
+import { getBrevo } from "@/lib/email/brevo";
+import { buildDeadlineAlertEmail } from "@/lib/email/templates";
 import type { AlertPreference, FiscalProfile } from "@/types";
 
 /**
- * POST /api/alerts/send
+ * GET /api/alerts/send
  *
- * Designed to be called by a cron job (Vercel Cron or Supabase Edge Function).
+ * Called by Vercel Cron daily at 07:00 UTC.
  * Checks all users with alerts enabled, finds deadlines within configured
- * days-before window, and logs the email content.
- *
- * Placeholder implementation -- actual email sending requires Resend API key.
- * When ready, replace the logging with actual Resend API calls.
+ * days-before window, and sends email reminders via Resend.
  */
-export async function POST(request: Request) {
-  // Simple API key check for cron jobs
+export async function GET(request: Request) {
+  // Vercel Cron sends CRON_SECRET via Authorization header
   const authHeader = request.headers.get("authorization");
   const cronSecret = process.env.CRON_SECRET;
 
@@ -26,7 +25,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Neautorizat" }, { status: 401 });
   }
 
-  const supabase = await createClient();
+  // Use service role client so we can read all users and use admin API
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+  );
 
   // Get all users with email alerts enabled
   const { data: preferences, error: prefError } = await supabase
@@ -105,27 +108,51 @@ export async function POST(request: Request) {
     }
   }
 
-  // Placeholder: log emails instead of sending
-  // TODO: Replace with actual Resend API integration
-  for (const email of emailsToSend) {
-    // In production, this would call Resend API:
-    // await resend.emails.send({
-    //   from: 'Prevo <alerte@prevo.ro>',
-    //   to: [userEmail],
-    //   subject: `Prevo: ${email.deadlineName} - ${email.daysUntil} zile ramase`,
-    //   html: `...`
-    // });
+  // Group emails by user
+  const emailsByUser = new Map<string, typeof emailsToSend>();
+  for (const entry of emailsToSend) {
+    const list = emailsByUser.get(entry.userId) ?? [];
+    list.push(entry);
+    emailsByUser.set(entry.userId, list);
+  }
 
-    // Placeholder logging (server-side only, not console.log in client code)
-    if (process.env.NODE_ENV === "development") {
-      console.info(
-        `[ALERT PLACEHOLDER] User ${email.userId}: ${email.deadlineName} on ${email.deadlineDate} (${email.daysUntil} days)`
-      );
+  // Fetch user emails and send via Brevo
+  const brevo = getBrevo();
+  let sent = 0;
+
+  for (const [userId, deadlines] of emailsByUser) {
+    // Get user email from auth.users via admin API
+    const { data: { user } } = await supabase.auth.admin.getUserById(userId);
+    if (!user?.email) continue;
+
+    const html = buildDeadlineAlertEmail(
+      deadlines.map((d) => ({
+        deadlineName: d.deadlineName,
+        deadlineDate: d.deadlineDate,
+        daysUntil: d.daysUntil,
+      }))
+    );
+
+    const subject =
+      deadlines.length === 1
+        ? `${deadlines[0].deadlineName} — ${deadlines[0].daysUntil} ${deadlines[0].daysUntil === 1 ? "zi ramasa" : "zile ramase"}`
+        : `${deadlines.length} termene fiscale se apropie`;
+
+    try {
+      await brevo.transactionalEmails.sendTransacEmail({
+        sender: { email: "contact@prevo.ro", name: "Prevo" },
+        to: [{ email: user.email }],
+        subject,
+        htmlContent: html,
+      });
+      sent++;
+    } catch {
+      // Continue sending to other users if one fails
     }
   }
 
   return NextResponse.json({
-    message: `Procesat ${emailsToSend.length} alerte`,
-    emailsSent: emailsToSend.length,
+    message: `Procesat ${emailsToSend.length} alerte, trimise ${sent} emailuri`,
+    emailsSent: sent,
   });
 }

@@ -21,23 +21,16 @@ const features = [
     span: "",
   },
   {
-    title: "Sincronizare e-Factura",
-    description:
-      "Conectezi contul ANAF o singura data. Facturile se sincronizeaza automat, fara copy-paste.",
-    icon: SyncIcon,
-    span: "md:col-span-2",
-  },
-  {
     title: "Monitor legislativ",
     description:
-      "Fiecare modificare fiscala explicata in limba romana, cu impact concret pe situatia ta. Cu baza legala si referinta Monitorul Oficial — nu trebuie sa cauti pe 5 site-uri sau sa platesti legis.ro.",
+      "Fiecare modificare fiscala explicata in limba romana, cu impact concret pe situatia ta. Cu baza legala si referinta Monitorul Oficial, fara sa cauti pe 5 site-uri sau sa platesti legis.ro.",
     icon: BellIcon,
     span: "md:col-span-2",
   },
   {
     title: "Wiki fiscal cu surse",
     description:
-      "Termeni fiscali explicati pe intelesul tuturor, fiecare cu baza legala verificabila. Nu \"cred ca asa e\" — ci legea exacta pe care se bazeaza.",
+      "Termeni fiscali explicati pe intelesul tuturor, fiecare cu baza legala verificabila. Nu \"cred ca asa e\", ci legea exacta pe care se bazeaza.",
     icon: BookIcon,
     span: "",
   },
@@ -63,14 +56,6 @@ function DocumentIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-    </svg>
-  );
-}
-
-function SyncIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182M4.031 9.865l.001 4.992" />
     </svg>
   );
 }
