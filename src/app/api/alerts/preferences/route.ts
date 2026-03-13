@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { isProUser } from "@/lib/stripe/subscription";
 
 const VALID_DAYS = [1, 3, 7];
+const FREE_MAX_ALERTS = 1;
 
 export async function GET() {
   const supabase = await createClient();
@@ -24,15 +26,23 @@ export async function GET() {
     return NextResponse.json({ error: "Eroare la citirea preferintelor" }, { status: 500 });
   }
 
+  const isPro = await isProUser();
+
   // Return defaults if no preferences exist yet
   if (!data) {
     return NextResponse.json({
       email_alerts_enabled: true,
       alert_days_before: [7, 3, 1],
+      is_pro: isPro,
+      max_alerts: isPro ? VALID_DAYS.length : FREE_MAX_ALERTS,
     });
   }
 
-  return NextResponse.json(data);
+  return NextResponse.json({
+    ...data,
+    is_pro: isPro,
+    max_alerts: isPro ? VALID_DAYS.length : FREE_MAX_ALERTS,
+  });
 }
 
 export async function PUT(request: Request) {
@@ -80,6 +90,14 @@ export async function PUT(request: Request) {
       return NextResponse.json(
         { error: "alert_days_before poate contine doar valorile: 1, 3, 7" },
         { status: 400 }
+      );
+    }
+
+    const isPro = await isProUser();
+    if (!isPro && body.alert_days_before.length > FREE_MAX_ALERTS) {
+      return NextResponse.json(
+        { error: `Contul gratuit permite maxim ${FREE_MAX_ALERTS} alerta. Upgrade la Pro pentru mai multe.` },
+        { status: 403 }
       );
     }
   }

@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 interface AlertPrefsState {
   emailAlertsEnabled: boolean;
   alertDaysBefore: number[];
+  isPro: boolean;
+  maxAlerts: number;
 }
 
 const AVAILABLE_DAYS = [
@@ -17,6 +19,8 @@ export function AlertPreferences() {
   const [prefs, setPrefs] = useState<AlertPrefsState>({
     emailAlertsEnabled: true,
     alertDaysBefore: [7, 3, 1],
+    isPro: false,
+    maxAlerts: 1,
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -30,10 +34,14 @@ export function AlertPreferences() {
           const data = await response.json() as {
             email_alerts_enabled: boolean;
             alert_days_before: number[];
+            is_pro: boolean;
+            max_alerts: number;
           };
           setPrefs({
             emailAlertsEnabled: data.email_alerts_enabled,
             alertDaysBefore: data.alert_days_before,
+            isPro: data.is_pro,
+            maxAlerts: data.max_alerts,
           });
         }
       } finally {
@@ -74,9 +82,15 @@ export function AlertPreferences() {
   }
 
   function handleToggleDay(day: number) {
-    const newDays = prefs.alertDaysBefore.includes(day)
+    const isRemoving = prefs.alertDaysBefore.includes(day);
+    const newDays = isRemoving
       ? prefs.alertDaysBefore.filter((d) => d !== day)
       : [...prefs.alertDaysBefore, day].sort((a, b) => b - a);
+
+    // Enforce limit for free users
+    if (!isRemoving && newDays.length > prefs.maxAlerts) {
+      return;
+    }
 
     const newPrefs = { ...prefs, alertDaysBefore: newDays };
     setPrefs(newPrefs);
@@ -133,22 +147,36 @@ export function AlertPreferences() {
             Cand sa primesti alerta?
           </h3>
           <div className="space-y-2">
-            {AVAILABLE_DAYS.map((day) => (
-              <label
-                key={day.value}
-                className="flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 transition-colors hover:bg-secondary-50"
-              >
-                <input
-                  type="checkbox"
-                  checked={prefs.alertDaysBefore.includes(day.value)}
-                  onChange={() => handleToggleDay(day.value)}
-                  disabled={saving}
-                  className="h-4 w-4 rounded border-secondary-300 text-primary-600 focus:ring-primary-500"
-                />
-                <span className="text-sm text-foreground">{day.label}</span>
-              </label>
-            ))}
+            {AVAILABLE_DAYS.map((day) => {
+              const isChecked = prefs.alertDaysBefore.includes(day.value);
+              const isAtLimit = !isChecked && prefs.alertDaysBefore.length >= prefs.maxAlerts;
+              return (
+                <label
+                  key={day.value}
+                  className={`flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 transition-colors ${
+                    isAtLimit ? "opacity-50 cursor-not-allowed" : "hover:bg-secondary-50"
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={() => handleToggleDay(day.value)}
+                    disabled={saving || isAtLimit}
+                    className="h-4 w-4 rounded border-secondary-300 text-primary-600 focus:ring-primary-500"
+                  />
+                  <span className="text-sm text-foreground">{day.label}</span>
+                  {isAtLimit && (
+                    <span className="ml-auto text-xs text-secondary-400">Pro</span>
+                  )}
+                </label>
+              );
+            })}
           </div>
+          {!prefs.isPro && (
+            <p className="mt-3 text-xs text-secondary-500">
+              Contul gratuit permite {prefs.maxAlerts} alerta. <a href="/panou" className="text-primary-600 hover:text-primary-700 font-medium">Upgrade la Pro</a> pentru toate.
+            </p>
+          )}
           {prefs.alertDaysBefore.length === 0 && (
             <p className="mt-2 text-xs text-warning-600">
               Selecteaza cel putin o optiune pentru a primi alerte.
