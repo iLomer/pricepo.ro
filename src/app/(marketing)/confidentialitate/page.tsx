@@ -28,9 +28,6 @@ export default function ConfidentialitatePage() {
               fiscal, statutul TVA, codul CAEN
             </li>
             <li>
-              <strong>Lista de asteptare:</strong> adresa de email
-            </li>
-            <li>
               <strong>Feedback:</strong> mesajul trimis, email (optional), pagina
               de pe care a fost trimis
             </li>
@@ -89,8 +86,9 @@ export default function ConfidentialitatePage() {
             <li>Retrage consimtamantul in orice moment</li>
           </ul>
           <p className="mt-3">
-            Pentru exercitarea acestor drepturi, contacteaza-ne prin bula de
-            feedback disponibila pe site.
+            Pentru exercitarea acestor drepturi, contacteaza-ne la{" "}
+            <a href="mailto:contact@prevo.ro" className="text-primary-600 hover:text-primary-700">contact@prevo.ro</a>{" "}
+            sau prin bula de feedback disponibila pe site.
           </p>
         </section>
 

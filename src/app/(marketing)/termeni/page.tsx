@@ -92,8 +92,9 @@ export default function TermeniPage() {
             7. Contact
           </h2>
           <p>
-            Pentru orice intrebari legate de acesti termeni, ne poti contacta
-            prin bula de feedback disponibila pe site.
+            Pentru orice intrebari legate de acesti termeni, ne poti contacta la{" "}
+            <a href="mailto:contact@prevo.ro" className="text-primary-600 hover:text-primary-700">contact@prevo.ro</a>{" "}
+            sau prin bula de feedback disponibila pe site.
           </p>
         </section>
       </div>

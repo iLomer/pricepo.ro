@@ -1,5 +1,5 @@
-import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
+import { getBrevo } from "@/lib/email/brevo";
 
 interface FeedbackRequestBody {
   message: string;
@@ -35,20 +35,23 @@ export async function POST(request: Request) {
     );
   }
 
-  const supabase = await createClient();
+  const brevo = getBrevo();
+  const replyTo = email?.trim() || undefined;
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  const { error } = await supabase.from("feedback").insert({
-    message: message.trim(),
-    email: email?.trim() || null,
-    page: page?.trim() || null,
-    user_id: user?.id || null,
-  });
-
-  if (error) {
+  try {
+    await brevo.transactionalEmails.sendTransacEmail({
+      sender: { email: "contact@prevo.ro", name: "Prevo Feedback" },
+      to: [{ email: "lomer.ionut@gmail.com" }],
+      replyTo: replyTo ? { email: replyTo } : undefined,
+      subject: `Feedback Prevo: ${page || "/"}`,
+      htmlContent: `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:560px">
+        <p style="font-size:15px;color:#1c1917;white-space:pre-wrap">${message.trim().replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>
+        <hr style="border:none;border-top:1px solid #e7e5e4;margin:20px 0" />
+        <p style="font-size:12px;color:#a8a29e">Email: ${replyTo || "nu a fost furnizat"}</p>
+        <p style="font-size:12px;color:#a8a29e">Pagina: ${page || "/"}</p>
+      </div>`,
+    });
+  } catch {
     return NextResponse.json(
       { error: "A aparut o eroare. Te rugam sa incerci din nou." },
       { status: 500 }
