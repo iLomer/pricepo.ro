@@ -133,10 +133,11 @@ export async function GET(request: Request) {
       }))
     );
 
+    const days = deadlines[0].daysUntil;
     const subject =
       deadlines.length === 1
-        ? `${deadlines[0].deadlineName} — ${deadlines[0].daysUntil} ${deadlines[0].daysUntil === 1 ? "zi ramasa" : "zile ramase"}`
-        : `${deadlines.length} termene fiscale se apropie`;
+        ? `Ai un termen fiscal in ${days} ${days === 1 ? "zi" : "zile"}`
+        : `Ai ${deadlines.length} termene fiscale aproape`;
 
     try {
       await brevo.transactionalEmails.sendTransacEmail({
